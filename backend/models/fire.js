@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const fireSchema = new mongoose.Schema({
     email: {
@@ -50,5 +52,22 @@ const fireSchema = new mongoose.Schema({
 
     // }
 })
+
+fireSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 10);
+    }
+
+    next();
+});
+
+fireSchema.methods.matchPassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+}
+
+fireSchema.methods.generateToken = function () {
+    return jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
+}
+
 
 export default mongoose.model('Fire', fireSchema)

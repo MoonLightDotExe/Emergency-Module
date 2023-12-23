@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const policeSchema = new mongoose.Schema({
     email: {
@@ -50,5 +52,22 @@ const policeSchema = new mongoose.Schema({
 
     // }
 })
+
+policeSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 10);
+    }
+
+    next();
+});
+
+policeSchema.methods.matchPassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+}
+
+policeSchema.methods.generateToken = function () {
+    return jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
+}
+
 
 export default mongoose.model('Police', policeSchema)
