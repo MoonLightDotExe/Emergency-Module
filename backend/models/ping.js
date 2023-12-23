@@ -1,24 +1,24 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const pingSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: [true, 'Enter User'],
-        ref: 'User'
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: [true, 'Enter User'],
+    ref: 'User',
+  },
+  location: {
+    latitude: {
+      type: Number,
+      required: [true, 'Enter Latitude'],
     },
-    location: {
-        lattitude: {
-            type: Number,
-            required: [true, 'Enter Lattitude']
-        },
-        longitude: {
-            type: Number,
-            required: [true, 'Enter Longitude']
-        }
+    longitude: {
+      type: Number,
+      required: [true, 'Enter Longitude'],
     },
-    // reports:{
+  },
+  // reports:{
 
-    // }
+  // }
 })
 
 export default mongoose.model('Ping', pingSchema)
