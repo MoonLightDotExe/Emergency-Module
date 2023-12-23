@@ -1,54 +1,54 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const policeSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: [true, 'Please Enter Email']
+  email: {
+    type: String,
+    required: [true, 'Please Enter Email'],
+  },
+  password: {
+    type: String,
+    required: [true, 'Please Enter Password'],
+  },
+  areaOfEffect: {
+    type: Number,
+  },
+  address: {
+    type: String,
+    required: [true, 'Enter Address'],
+  },
+  location: {
+    latitude: {
+      type: Number,
+      required: [true, 'Enter Latitude'],
     },
-    password: {
-        type: String,
-        required: [true, 'Please Enter Password']
+    longitude: {
+      type: Number,
+      required: [true, 'Enter Longitude'],
     },
-    areaOfEffect: {
-        type: Number
+  },
+  pingHistory: {
+    activePings: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Ping',
     },
-    address: {
-        type: String,
-        required: [true, 'Enter Address']
+    pastPings: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Ping',
     },
-    location: {
-        lattitude: {
-            type: Number,
-            required: [true, 'Enter Lattitude']
-        },
-        longitude: {
-            type: Number,
-            required: [true, 'Enter Longitude']
-        }
+  },
+  resources: {
+    staffAvailable: {
+      type: Number,
+      required: [true, 'Enter Number of Staff'],
     },
-    pingHistory: {
-        activePings: {
-            type: [mongoose.Schema.Types.ObjectId],
-            ref: 'Ping'
-        },
-        pastPings: {
-            type: [mongoose.Schema.Types.ObjectId],
-            ref: 'Ping'
-        }
+    vehiclesAvailable: {
+      type: Number,
+      required: [true, 'Enter Number of Fire Brigades'],
     },
-    resources: {
-        staffAvailable: {
-            type: Number,
-            required: [true, 'Enter Number of Staff']
-        },
-        vehiclesAvailable: {
-            type: Number,
-            required: [true, 'Enter Number of Fire Brigades']
-        }
-    },
-    // reports:{
+  },
+  // reports:{
 
-    // }
+  // }
 })
 
 export default mongoose.model('Police', policeSchema)
