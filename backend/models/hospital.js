@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const hospitalSchema = new mongoose.Schema({
   email: {
@@ -71,4 +71,4 @@ hospitalSchema.methods.generateToken = function () {
   return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
 }
 
-export default mongoose.model('Hospital', hospitalSchema)
+module.exports = mongoose.model('Hospital', hospitalSchema)
