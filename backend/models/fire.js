@@ -1,73 +1,72 @@
-import mongoose from "mongoose";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const fireSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: [true, 'Please Enter Email']
+  email: {
+    type: String,
+    required: [true, 'Please Enter Email'],
+  },
+  password: {
+    type: String,
+    required: [true, 'Please Enter Password'],
+  },
+  areaOfEffect: {
+    type: Number,
+  },
+  address: {
+    type: String,
+    required: [true, 'Enter Address'],
+  },
+  location: {
+    lattitude: {
+      type: Number,
+      required: [true, 'Enter Lattitude'],
     },
-    password: {
-        type: String,
-        required: [true, 'Please Enter Password']
+    longitude: {
+      type: Number,
+      required: [true, 'Enter Longitude'],
     },
-    areaOfEffect: {
-        type: Number
+  },
+  pingHistory: {
+    activePings: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Ping',
     },
-    address: {
-        type: String,
-        required: [true, 'Enter Address']
+    pastPings: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Ping',
     },
-    location: {
-        lattitude: {
-            type: Number,
-            required: [true, 'Enter Lattitude']
-        },
-        longitude: {
-            type: Number,
-            required: [true, 'Enter Longitude']
-        }
+  },
+  resources: {
+    staffAvailable: {
+      type: Number,
+      required: [true, 'Enter Number of Staff'],
     },
-    pingHistory: {
-        activePings: {
-            type: [mongoose.Schema.Types.ObjectId],
-            ref: 'Ping'
-        },
-        pastPings: {
-            type: [mongoose.Schema.Types.ObjectId],
-            ref: 'Ping'
-        }
+    brigadesAvailable: {
+      type: Number,
+      required: [true, 'Enter Number of Fire Brigades'],
     },
-    resources: {
-        staffAvailable: {
-            type: Number,
-            required: [true, 'Enter Number of Staff']
-        },
-        brigadesAvailable: {
-            type: Number,
-            required: [true, 'Enter Number of Fire Brigades']
-        }
-    },
-    // reports:{
+  },
+  // reports:{
 
-    // }
+  // }
 })
 
 fireSchema.pre('save', async function (next) {
-    if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 10);
-    }
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 10)
+  }
 
-    next();
-});
+  next()
+})
 
 fireSchema.methods.matchPassword = async function (password) {
-    return await bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password)
 }
 
 fireSchema.methods.generateToken = function () {
-    return jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
+  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
 }
 
-
-export default mongoose.model('Fire', fireSchema)
+module.exports = mongoose.model('Fire', fireSchema)
