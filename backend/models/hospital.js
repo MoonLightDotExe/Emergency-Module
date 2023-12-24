@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const hospitalSchema = new mongoose.Schema({
   email: {
@@ -52,4 +54,21 @@ const hospitalSchema = new mongoose.Schema({
 
   // }
 })
-module.exports = mongoose.model('Hospital', hospitalSchema)
+
+hospitalSchema.pre('save', async function (next) {
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 10)
+  }
+
+  next()
+})
+
+hospitalSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.password)
+}
+
+hospitalSchema.methods.generateToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
+}
+
+export default mongoose.model('Hospital', hospitalSchema)
