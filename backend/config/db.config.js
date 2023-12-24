@@ -3,7 +3,7 @@ const dotenv = require('dotenv').config()
 
 const connectDB = async (req, res) => {
   const MONGOOSE_OPTIONS = {
-    dbName: 'EMERGENCY_MODULE',
+    dbName: 'Emergency_Module',
     serverSelectionTimeoutMS: 5000,
     socketTimeoutMS: 60000,
   }

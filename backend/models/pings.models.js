@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const pingSchema = new mongoose.Schema({
   user: {
@@ -16,9 +16,13 @@ const pingSchema = new mongoose.Schema({
       required: [true, 'Enter Longitude'],
     },
   },
+  type: {
+    type: Number,
+    required: [true, 'Enter Type of Ping']
+  }
   // reports:{
 
   // }
 })
 
-export default mongoose.model('Ping', pingSchema)
+module.exports = mongoose.model('Ping', pingSchema)

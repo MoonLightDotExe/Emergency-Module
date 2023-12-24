@@ -1,6 +1,8 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
-const policeSchema = new mongoose.Schema({
+const fireSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'Please Enter Email'],
@@ -17,9 +19,9 @@ const policeSchema = new mongoose.Schema({
     required: [true, 'Enter Address'],
   },
   location: {
-    latitude: {
+    lattitude: {
       type: Number,
-      required: [true, 'Enter Latitude'],
+      required: [true, 'Enter Lattitude'],
     },
     longitude: {
       type: Number,
@@ -41,7 +43,7 @@ const policeSchema = new mongoose.Schema({
       type: Number,
       required: [true, 'Enter Number of Staff'],
     },
-    vehiclesAvailable: {
+    brigadesAvailable: {
       type: Number,
       required: [true, 'Enter Number of Fire Brigades'],
     },
@@ -51,4 +53,20 @@ const policeSchema = new mongoose.Schema({
   // }
 })
 
-export default mongoose.model('Police', policeSchema)
+fireSchema.pre('save', async function (next) {
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 10)
+  }
+
+  next()
+})
+
+fireSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.password)
+}
+
+fireSchema.methods.generateToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
+}
+
+module.exports = mongoose.model('fires', fireSchema)
