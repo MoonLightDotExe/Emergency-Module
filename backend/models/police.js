@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const policeSchema = new mongoose.Schema({
   email: {
@@ -51,4 +51,4 @@ const policeSchema = new mongoose.Schema({
   // }
 })
 
-export default mongoose.model('Police', policeSchema)
+module.exports = mongoose.model('Police', policeSchema)

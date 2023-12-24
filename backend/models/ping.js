@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const pingSchema = new mongoose.Schema({
   user: {
@@ -21,4 +21,4 @@ const pingSchema = new mongoose.Schema({
   // }
 })
 
-export default mongoose.model('Ping', pingSchema)
+module.exports = mongoose.model('Ping', pingSchema)

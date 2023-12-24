@@ -1,56 +1,55 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 
 const hospitalSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: [true, 'Please Enter Email']
+  email: {
+    type: String,
+    required: [true, 'Please Enter Email'],
+  },
+  password: {
+    type: String,
+    required: [true, 'Please Enter Password'],
+  },
+  areaOfEffect: {
+    type: Number,
+  },
+  address: {
+    type: String,
+    required: [true, 'Enter Address'],
+  },
+  location: {
+    latitude: {
+      type: Number,
+      required: [true, 'Enter Latitude'],
+      ref: 'Ping',
     },
-    password: {
-        type: String,
-        required: [true, 'Please Enter Password']
+    longitude: {
+      type: Number,
+      required: [true, 'Enter Longitude'],
+      ref: 'Ping',
     },
-    areaOfEffect: {
-        type: Number
+  },
+  pingHistory: {
+    activePings: {
+      type: [mongoose.Schema.Types.ObjectId],
+      //ref:
     },
-    address: {
-        type: String,
-        required: [true, 'Enter Address']
+    pastPings: {
+      type: [mongoose.Schema.Types.ObjectId],
+      //ref:
     },
-    location: {
-        lattitude: {
-            type: Number,
-            required: [true, 'Enter Lattitude'],
-            ref: 'Ping'
-        },
-        longitude: {
-            type: Number,
-            required: [true, 'Enter Longitude'],
-            ref: 'Ping'
-        }
+  },
+  resources: {
+    staffAvailable: {
+      type: Number,
+      required: [true, 'Enter Number of Staff'],
     },
-    pingHistory: {
-        activePings: {
-            type: [mongoose.Schema.Types.ObjectId],
-            //ref:
-        },
-        pastPings: {
-            type: [mongoose.Schema.Types.ObjectId],
-            //ref:
-        }
+    ambulancesAvailable: {
+      type: Number,
+      required: [true, 'Enter Number of Fire Brigades'],
     },
-    resources: {
-        staffAvailable: {
-            type: Number,
-            required: [true, 'Enter Number of Staff']
-        },
-        ambulancesAvailable: {
-            type: Number,
-            required: [true, 'Enter Number of Fire Brigades']
-        }
-    },
-    // reports:{
+  },
+  // reports:{
 
-    // }
+  // }
 })
-
-export default mongoose.model('Hospital', hospitalSchema)
+module.exports = mongoose.model('Hospital', hospitalSchema)
