@@ -71,4 +71,4 @@ hospitalSchema.methods.generateToken = function () {
   return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
 }
 
-module.exports = mongoose.model('Hospital', hospitalSchema)
+module.exports = mongoose.model('hospitals', hospitalSchema)
