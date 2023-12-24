@@ -69,4 +69,4 @@ fireSchema.methods.generateToken = function () {
   return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
 }
 
-module.exports = mongoose.model('Fire', fireSchema)
+module.exports = mongoose.model('fires', fireSchema)

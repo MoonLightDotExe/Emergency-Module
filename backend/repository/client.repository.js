@@ -1,7 +1,7 @@
 const dotenv = require('dotenv').config()
-const fire = require('../models/fire.js')
-const hospital = require('../models/hospital.js')
-const police = require('../models/police.js')
+const fires = require('../models/fires.models.js')
+const hospitals = require('../models/hospitals.models.js')
+const polices = require('../models/polices.models.js')
 
 const self = (module.exports = {
   getServices: (body) => {
@@ -11,8 +11,7 @@ const self = (module.exports = {
 
         if (parseInt(body.type) == 1) {
           try {
-            const fire_response = await fire.find({})
-            console.log(fire_response)
+            const fire_response = await fires.find({})
 
             resolve(fire_response)
           } catch (err) {
@@ -20,7 +19,7 @@ const self = (module.exports = {
           }
         } else if (parseInt(body.type) == 2) {
           try {
-            const hospital_response = await hospital.find({})
+            const hospital_response = await hospitals.find({})
             console.log(hospital_response)
 
             resolve(hospital_response)
@@ -29,7 +28,7 @@ const self = (module.exports = {
           }
         } else if (parseInt(body.type) == 3) {
           try {
-            const police_response = await police.find({})
+            const police_response = await polices.find({})
             console.log(police_response)
 
             resolve(police_response)
