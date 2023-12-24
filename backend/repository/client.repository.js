@@ -2,6 +2,7 @@ const dotenv = require('dotenv').config()
 const fire = require('../models/fire.js')
 const hospital = require('../models/hospital.js')
 const police = require('../models/police.js')
+const ping = require('../models/ping.js')
 
 const self = (module.exports = {
   getServices: (body) => {
@@ -49,14 +50,15 @@ const self = (module.exports = {
   addPing: (body) => {
     return new Promise(async (resolve, reject) => {
       try {
+        console.log(body);
         //function to get sorted array of locations by distance
         function sortLocationsByDistance(locations, givenLocation) {
           // Function to calculate Euclidean distance between two locations
           function calculateDistance(location1, location2) {
-            const x1 = location1.latitude;
-            const y1 = location1.longitude;
-            const x2 = location2.latitude;
-            const y2 = location2.longitude;
+            const x1 = location1.Lat;
+            const y1 = location1.Long;
+            const x2 = location2.Lat;
+            const y2 = location2.Long;
 
             return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
           }
@@ -70,12 +72,26 @@ const self = (module.exports = {
           });
         }
 
-        const userLocation = body.location;
-        const locationsArray = this.getServices(body.type);
+        const userLocation = body.Location;
+        const locationsArray = await self.getServices(body.Type);
         const sortedLocations = sortLocationsByDistance(locationsArray, userLocation);
         console.log(sortedLocations);
+
+        //create a new ping
+        const new_ping = await ping.create(
+          {
+            location: {
+              latitude: body.Location.Lat,
+              longitude: body.Location.Long,
+            },
+            type: body.Type,
+            user: body.User_ID
+          }
+        );
+
         resolve(sortedLocations);
       } catch (error) {
+        //console.log(error);
         reject(error);
       }
     })

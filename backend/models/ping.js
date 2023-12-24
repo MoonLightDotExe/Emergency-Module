@@ -16,6 +16,10 @@ const pingSchema = new mongoose.Schema({
       required: [true, 'Enter Longitude'],
     },
   },
+  type: {
+    type: Number,
+    required: [true, 'Enter Type of Ping']
+  }
   // reports:{
 
   // }

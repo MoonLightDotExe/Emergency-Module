@@ -20,4 +20,22 @@ module.exports = {
       })
     }
   },
+  test_add_ping: async (req, res) => {
+    try {
+      // console.log(req.body);
+      const data = await client_repo.addPing(req.body);
+      console.log(data);
+      res.json({
+        success: true,
+        data,
+        msg: 'Added Ping Successfully',
+      })
+    } catch (error) {
+      res.json({
+        success: false,
+        Error: error,
+        msg: 'Add ping failed!',
+      })
+    }
+  }
 }
