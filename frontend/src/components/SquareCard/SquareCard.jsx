@@ -7,35 +7,42 @@ import { GiPoliceOfficerHead } from 'react-icons/gi'
 import { FaLocationDot } from 'react-icons/fa6'
 
 const SquareCard = () => {
+  const handleClick = () => {
+    console.log('clicked')
+  }
+
   return (
     <>
-      <div className="square-card sq-one">
+      <button
+        className="square-card sq-one"
+        onClick={handleClick}
+      >
         <div className="icon">
           <FaFire />
         </div>
         <h1 className="text">Fire</h1>
-      </div>
+      </button>
 
-      <div className="square-card sq-two">
+      <button className="square-card sq-two">
         <div className="icon">
           <FaHospitalUser />
         </div>
         <h1 className="text">Hospital</h1>
-      </div>
+      </button>
 
-      <div className="square-card sq-three">
+      <button className="square-card sq-three">
         <div className="icon">
           <GiPoliceOfficerHead />
         </div>
         <h1 className="text">Police</h1>
-      </div>
+      </button>
 
-      <div className="square-card sq-four">
+      <button className="square-card sq-four">
         <div className="icon">
           <FaLocationDot />
         </div>
         <h1 className="text">Activity</h1>
-      </div>
+      </button>
     </>
   )
 }

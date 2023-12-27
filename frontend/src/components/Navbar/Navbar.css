@@ -8,6 +8,9 @@
   padding: 0 30px 0 50px;
   /* background-color: #648de5; */
   color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .dropdown {

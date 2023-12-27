@@ -1,0 +1,33 @@
+.sidebar {
+  position: absolute;
+  top: 67px;
+  left: -50px;
+  /* width: 350px; */
+  height: 90vh;
+  background-color: #648de5;
+  color: black;
+  z-index: 1;
+  animation: widd 1s forwards;
+}
+
+@keyframes widd {
+  from {
+    width: 0;
+  }
+  to {
+    width: 350px;
+  }
+}
+
+.i-sidebar {
+  animation: i-widd 1s forwards;
+}
+
+@keyframes i-widd {
+  from {
+    width: 350px;
+  }
+  to {
+    width: 0;
+  }
+}

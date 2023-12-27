@@ -7,6 +7,13 @@
   align-items: center;
   color: white;
   gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.square-card:hover {
+  filter: opacity(80%);
+  /* filter: brightness(120%); */
 }
 
 .icon {
