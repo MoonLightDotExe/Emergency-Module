@@ -50,10 +50,8 @@ const self = (module.exports = {
     return new Promise(async (resolve, reject) => {
       try {
         console.log(body)
-        //function to get sorted array of locations by distance
         function sortLocationsByDistance(locations, givenLocation) {
-          // Function to calculate Euclidean distance between two locations
-          function calculateDistance(location1, location2) {
+          function CalculateEuclideanDistance(location1, location2) {
             const x1 = location1.Lat
             const y1 = location1.Long
             const x2 = location2.Lat
@@ -62,10 +60,15 @@ const self = (module.exports = {
             return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
           }
 
-          // Sort locations array based on distance from the given location
           return locations.sort((location1, location2) => {
-            const distance1 = calculateDistance(givenLocation, location1)
-            const distance2 = calculateDistance(givenLocation, location2)
+            const distance1 = CalculateEuclideanDistance(
+              givenLocation,
+              location1
+            )
+            const distance2 = CalculateEuclideanDistance(
+              givenLocation,
+              location2
+            )
 
             return distance1 - distance2
           })
@@ -79,7 +82,6 @@ const self = (module.exports = {
         )
         console.log(sortedLocations)
 
-        //create a new ping
         const new_ping = await pings.create({
           location: {
             latitude: body.Location.Lat,
@@ -91,7 +93,6 @@ const self = (module.exports = {
 
         resolve(sortedLocations)
       } catch (error) {
-        //console.log(error);
         reject(error)
       }
     })
