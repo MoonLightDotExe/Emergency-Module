@@ -72,12 +72,15 @@ const self = (module.exports = {
         }
 
         const userLocation = body.Location;
-        const locationsArray = await self.getServices(body.Type);
+        const sendBody = {
+          type: body.Type
+        }
+        const locationsArray = await self.getServices(sendBody);
         const sortedLocations = sortLocationsByDistance(locationsArray, userLocation);
         console.log(sortedLocations);
 
         //create a new ping
-        const new_ping = await ping.create(
+        const new_ping = await pings.create(
           {
             location: {
               latitude: body.Location.Lat,
