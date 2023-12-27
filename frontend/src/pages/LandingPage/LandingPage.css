@@ -1,5 +1,6 @@
 .landing-page {
   max-width: 100vw;
+  height: 200vh;
 }
 
 .top {
@@ -21,7 +22,9 @@
   font-size: 30px;
   font-weight: 400;
   margin: 10px 55px;
-  opacity: 0.5;
+  color: rgba(0, 0, 0, 0.6);
+  /* opacity: 0.5; */
+  /* z-index: -1; */
 }
 
 .cards {
