@@ -37,11 +37,11 @@ const userSchema = new mongoose.Schema({
   pingHistory: {
     activePings: {
       type: [mongoose.Schema.Types.ObjectId],
-      ref: 'Ping',
+      ref: 'Pings',
     },
     pastPings: {
       type: [mongoose.Schema.Types.ObjectId],
-      ref: 'Ping',
+      ref: 'Pings',
     },
   },
   trustFactor: {
