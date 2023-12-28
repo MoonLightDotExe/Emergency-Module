@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="dropdown">
         <button onClick={handleClick}>
-          <IoMdMenu />
+          <IoMdMenu color="#648de5" />
         </button>
         {toggle && <Sidebar setvalue={toggle} />}
       </div>
