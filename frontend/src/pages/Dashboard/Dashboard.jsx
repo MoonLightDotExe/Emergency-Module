@@ -37,46 +37,60 @@ import { FaLocationDot } from 'react-icons/fa6'
 const Dashboard = () => {
   const data = [
     {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      name: '12:00am',
+      Dahisar: 400,
+      Borivali: 240,
+      Andheri: 250,
+      amt: 240,
     },
     {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      name: '3:00am',
+      Dahisar: 300,
+      Borivali: 138,
+      Andheri: 338,
+      amt: 221,
     },
     {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      name: '6:00am',
+      Dahisar: 200,
+      Borivali: 980,
+      Andheri: 596,
+      amt: 229,
     },
     {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      name: '9:00am',
+      Dahisar: 278,
+      Borivali: 398,
+      Andheri: 124,
+      amt: 200,
     },
     {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      name: '12:00pm',
+      Dahisar: 189,
+      Borivali: 480,
+      Andheri: 842,
+      amt: 218,
     },
     {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
+      name: '15:00pm',
+      Dahisar: 239,
+      Borivali: 380,
+      Andheri: 252,
+      amt: 250,
     },
     {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
+      name: '18:00pm',
+      Dahisar: 349,
+      Borivali: 430,
+      Andheri: 501,
+      amt: 210,
+    },
+    {
+      name: '21:00pm',
+      Dahisar: 210,
+      Borivali: 380,
+      Andheri: 312,
+      amt: 225,
     },
   ]
 
@@ -167,7 +181,10 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <div className="dash-sidebar">
+      <div
+        className="dash-sidebar"
+        style={{ position: 'fixed', margin: '70px 0 0 ' }}
+      >
         <ul className="s-list">
           <li>
             <Link>
@@ -206,14 +223,17 @@ const Dashboard = () => {
             <Link>
               <FaLocationDot
                 size={25}
-                style={{ marginLeft: '18px' }}
+                style={{ marginLeft: '15px' }}
               />
               <h1>Location</h1>
             </Link>
           </li>
         </ul>
       </div>
-      <div className="dash-right">
+      <div
+        className="dash-right"
+        style={{ marginLeft: '115px' }}
+      >
         <div className="stat-map">
           <h1
             style={{
@@ -221,6 +241,7 @@ const Dashboard = () => {
               fontWeight: '700',
               margin: '5px 0 5px 25px',
               letterSpacing: '0.15rem',
+              textTransform: 'uppercase',
             }}
           >
             Current Emergencies
@@ -271,7 +292,6 @@ const Dashboard = () => {
 
             <ul className="sml-bottom">
               <li className="sml-bottom-list">
-                {/* <div className="sml-bl-items">Item1</div> */}
                 <div className="sml-bl-service">
                   <h1>Urban Fire</h1>
                   <p>Fire outrages in localities</p>
@@ -280,7 +300,6 @@ const Dashboard = () => {
               </li>
 
               <li className="sml-bottom-list">
-                {/* <div className="sml-bl-items">Item2</div> */}
                 <div className="sml-bl-service">
                   <h1>Flu</h1>
                   <p>Dengue fever </p>
@@ -289,7 +308,6 @@ const Dashboard = () => {
               </li>
 
               <li className="sml-bottom-list">
-                {/* <div className="sml-bl-items">Item3</div> */}
                 <div className="sml-bl-service">
                   <h1>Riots</h1>
                   <p>Protests of crowd</p>
@@ -298,7 +316,6 @@ const Dashboard = () => {
               </li>
 
               <li className="sml-bottom-list">
-                {/* <div className="sml-bl-items">Item4</div> */}
                 <div className="sml-bl-service">
                   <h1>Accident</h1>
                   <p>Bike Crash</p>
@@ -307,7 +324,6 @@ const Dashboard = () => {
               </li>
 
               <li className="sml-bottom-list-last">
-                {/* <div className="sml-bl-items">Item5</div> */}
                 <div className="sml-bl-service">
                   <h1>Gas Leak</h1>
                   <p>Gas Leak in slums</p>
@@ -324,11 +340,11 @@ const Dashboard = () => {
                 fontSize: '30px',
                 margin: '0 0 20px 0',
                 fontWeight: '700',
-                // border: '1px solid black',
                 textAlign: 'center',
+                textTransform: 'uppercase',
               }}
             >
-              Heading
+              Emergency Rates
             </h1>
             <LineChart
               width={900}
@@ -340,7 +356,7 @@ const Dashboard = () => {
                 left: 20,
                 bottom: 5,
               }}
-              style={{ zIndex: '-1' }}
+              // style={{ zIndex: '-1' }}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
@@ -349,14 +365,19 @@ const Dashboard = () => {
               <Legend />
               <Line
                 type="monotone"
-                dataKey="pv"
+                dataKey="Dahisar"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
               <Line
                 type="monotone"
-                dataKey="uv"
+                dataKey="Borivali"
                 stroke="#82ca9d"
+              />
+              <Line
+                type="monotone"
+                dataKey="Andheri"
+                stroke="#e4d00a"
               />
             </LineChart>
           </div>
@@ -367,7 +388,10 @@ const Dashboard = () => {
           style={{ marginBottom: '50px' }}
         >
           <div className="stat-lower-heading">
-            <div className="slh-left">
+            <div
+              className="slh-left"
+              style={{ textTransform: 'uppercase' }}
+            >
               <h1>Emergency and Help Available</h1>
               <p>Lorem ipsum dolor sit amet.</p>
             </div>
