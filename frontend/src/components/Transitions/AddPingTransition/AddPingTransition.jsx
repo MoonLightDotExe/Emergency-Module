@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { Box, Spinner, Text } from '@chakra-ui/react'
 import './AddPingTransition.css'
 
 function AddPingTransition() {
+  const { user, isLoading } = useSelector((state) => state.addPing)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (isLoading == true) {
+      navigate('/loading')
+    }
+    if (isLoading == false) {
+      navigate('/nearby_services')
+    }
+  }, [isLoading, navigate])
+
   return (
     <Box
       sx={{

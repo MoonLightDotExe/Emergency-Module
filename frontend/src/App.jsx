@@ -6,18 +6,21 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import AddPingTransition from './components/Transitions/AddPingTransition/AddPingTransition'
 import NearbyServices from './pages/NearbyServices/NearbyServices'
 import Maps from './components/Maps/Maps'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const { user, isLoading } = useSelector((state) => state.addPing)
   return (
     <Router>
       <Navbar />
+
       <Routes>
         <Route
           path='/'
           Component={LandingPage}
         />
         <Route
-          path='/test'
+          path='/loading'
           Component={AddPingTransition}
         />
         <Route

@@ -5,12 +5,13 @@ const API_URL = 'http://localhost:5000/tests/addPing'
 const addPingService = async (userData) => {
   try {
     console.log(userData)
+    const user_id = localStorage.getItem('user_id')
     let sendData = {
       Location: {
         Long: userData.long,
         Lat: userData.lat,
       },
-      User_ID: 123,
+      User_ID: user_id,
       Type: parseInt(userData.type),
     }
 

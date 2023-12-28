@@ -5,7 +5,9 @@ const initialState = {
   user: null,
   isError: false,
   isSucces: false,
-  isLoading: false,
+  isLoading: null,
+  data: null,
+  type: null,
   message: '',
 }
 
@@ -27,7 +29,16 @@ export const addPingSlice = createSlice({
   name: 'addPing',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(addPing.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(addPing.fulfilled, (state) => {
+        state.isLoading = false
+        state.message = 'Loaded'
+      })
+  },
 })
 
 export default addPingSlice.reducer
