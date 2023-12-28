@@ -10,39 +10,39 @@ import { IoMdMenu } from 'react-icons/io'
 import Sidebar from '../Sidebar/Sidebar'
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(true)
 
   const handleClick = () => {
     setToggle(!toggle)
   }
 
   return (
-    <div className='navbar'>
-      <div className='dropdown'>
+    <div className="navbar">
+      <div className="dropdown">
         <button onClick={handleClick}>
-          <IoMdMenu color='#648de5' />
+          <IoMdMenu color="#648de5" />
         </button>
         {toggle && <Sidebar setvalue={toggle} />}
       </div>
-      <div className='nav-links'>
-        <span>
+      <div className="nav-links">
+        <Link>
           <FaPhoneAlt
-            color='#648de5'
             size={31}
+            color="white"
           />
-        </span>
-        <span>
+        </Link>
+        <Link>
           <FaEnvelope
-            color='#648de5'
             size={35}
+            color="white"
           />
-        </span>
-        <span>
+        </Link>
+        <Link>
           <MdAccountCircle
-            color='#648de5'
             size={40}
+            color="white"
           />
-        </span>
+        </Link>
       </div>
     </div>
   )
