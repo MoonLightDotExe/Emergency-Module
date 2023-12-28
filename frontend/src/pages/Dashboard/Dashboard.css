@@ -9,10 +9,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  top: 0;
 }
 
 .s-menu {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   margin: 25px 0 25px;
 }
@@ -24,6 +25,7 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+  margin-top: 90px;
 }
 
 .s-list li {
@@ -46,13 +48,17 @@
 
 .dash-right {
   width: 1440px;
-  height: 100vh;
 }
 
 .stat-cards {
   display: flex;
   gap: 50px;
   margin: 30px 20px;
+}
+
+.stat-map {
+  width: 1400px;
+  height: 600px;
 }
 
 .stat-middle {
@@ -68,7 +74,7 @@
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.06);
   width: 340px;
   border-radius: 10px;
-  height: 500px;
+  height: 540px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,10 +113,69 @@
   width: 100px;
   font-weight: 500;
   margin-right: 10px;
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   height: 30px;
-  font-size: 15px;
+  font-size: 13px;
+}
+
+.sml-top-right:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sml-middle {
+  width: 320px;
+  height: 30px;
+  padding: 15px 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: rgb(75, 75, 75);
+}
+
+.sml-bottom {
+  width: 320px;
+  height: 400px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.sml-bottom-list-last {
+  border-bottom: none;
+  padding: 15px 10px 10px 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  border: none;
+}
+
+.sml-bottom-list {
+  padding: 15px 10px 10px 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  border: none;
+  border-bottom: 1px dotted grey;
+  border-width: 1.7px;
+}
+
+.sml-bl-service h1 {
+  font-weight: 500;
+  width: 170px;
+  font-size: 18px;
+}
+
+.sml-bl-service p {
+  font-size: 16px;
+}
+
+.sml-bl-service-type {
+  width: 95px;
+  font-size: 17px;
 }
 
 .stat-middle-right {
@@ -118,5 +183,21 @@
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   width: 950px;
+  height: 540px;
+}
+
+.stat-lower {
+  width: 1330px;
   height: 500px;
+  margin: 100px;
+  margin: 0px 0 0 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.06);
+}
+
+.stat-lower-heading {
+  width: 1330px;
+  height: 90px;
+  border: 1px solid black;
 }
