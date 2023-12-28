@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
+
+import { useSelector } from 'react-redux'
 
 import {
   Box,
@@ -17,6 +20,16 @@ import {
 import './NearbyServices.css'
 
 function NearbyServices() {
+  const { data } = useSelector((state) => state.addPing)
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
+
+  const handleTrack = (e) => {
+    console.log(e)
+  }
+
   return (
     <>
       <div className='container_nearby_services'>
@@ -41,72 +54,36 @@ function NearbyServices() {
           variant='outline'
         >
           <Stack spacing='4'>
-            <Card variant='elevated'>
-              <CardHeader>
-                <Heading size='md'> Hospital 1</Heading>
-              </CardHeader>
-              <CardBody>
-                <Flex>
-                  <Box>
-                    <Text>Address 1, ABC, Mumbai-400068</Text>
-                  </Box>
-                  <Spacer />
-                  <Box>
-                    <Button
-                      colorScheme='blue'
-                      size='lg'
-                    >
-                      {' '}
-                      TRACK{' '}
-                    </Button>
-                  </Box>
-                </Flex>
-              </CardBody>
-            </Card>
-            <Card variant='elevated'>
-              <CardHeader>
-                <Heading size='md'> Hospital 2 </Heading>
-              </CardHeader>
-              <CardBody>
-                <Flex>
-                  <Box>
-                    <Text>Address 1, ABC, Mumbai-400068</Text>
-                  </Box>
-                  <Spacer />
-                  <Box>
-                    <Button
-                      colorScheme='blue'
-                      size='lg'
-                    >
-                      {' '}
-                      TRACK{' '}
-                    </Button>
-                  </Box>
-                </Flex>
-              </CardBody>
-            </Card>
-            <Card variant='elevated'>
-              <CardHeader>
-                <Heading size='md'>Hospital 3 </Heading>
-              </CardHeader>
-              <CardBody>
-                <Flex>
-                  <Box>
-                    <Text>Address 1, ABC, Mumbai-400068</Text>
-                  </Box>
-                  <Spacer />
-                  <Box>
-                    <Button
-                      colorScheme='blue'
-                      size='lg'
-                    >
-                      {' '}
-                      TRACK{' '}
-                    </Button>
-                  </Box>
-                </Flex>
-              </CardBody>
-            </Card>
+            {data.map((val) => {
+              return (
+                <Card
+                  key={val.id}
+                  variant='elevated'
+                >
+                  <CardHeader>
+                    <Heading size='md'>{val.email}</Heading>
+                  </CardHeader>
+                  <CardBody>
+                    <Flex>
+                      <Box>
+                        <Text>{val.address}</Text>
+                      </Box>
+                      <Spacer />
+                      <Box>
+                        <Button
+                          colorScheme='blue'
+                          size='lg'
+                          onClick={() => handleTrack(val.id)}
+                        >
+                          {' '}
+                          TRACK{' '}
+                        </Button>
+                      </Box>
+                    </Flex>
+                  </CardBody>
+                </Card>
+              )
+            })}
           </Stack>
         </Card>
       </div>
