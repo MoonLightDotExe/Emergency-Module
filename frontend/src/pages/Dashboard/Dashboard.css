@@ -1,0 +1,122 @@
+.dashboard {
+  max-width: 100vw;
+  display: flex;
+}
+
+.dash-sidebar {
+  width: 130px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.s-menu {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 25px 0 25px;
+}
+
+.s-list {
+  border-right: 1px solid grey;
+  padding-right: 15px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.s-list li {
+  padding: 15px 7px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.s-list li:hover {
+  background-color: white;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.active {
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dash-right {
+  width: 1440px;
+  height: 100vh;
+}
+
+.stat-cards {
+  display: flex;
+  gap: 50px;
+  margin: 30px 20px;
+}
+
+.stat-middle {
+  width: 1400px;
+  height: 600px;
+  display: flex;
+  gap: 30px;
+}
+
+.stat-middle-left {
+  margin: 0px 20px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.06);
+  width: 340px;
+  border-radius: 10px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sml-top {
+  width: 320px;
+  height: 70px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sml-top-left {
+  width: 180px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 20px;
+}
+
+.sml-top-left h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sml-top-left h2 {
+  font-weight: 500;
+  color: grey;
+}
+
+.sml-top-right {
+  width: 100px;
+  font-weight: 500;
+  margin-right: 10px;
+  background-color: rgba(128, 128, 128, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  height: 30px;
+  font-size: 15px;
+}
+
+.stat-middle-right {
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  width: 950px;
+  height: 500px;
+}

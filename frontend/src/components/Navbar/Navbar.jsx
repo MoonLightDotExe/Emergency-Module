@@ -17,30 +17,30 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar'>
-      <div className='dropdown'>
+    <div className="navbar">
+      <div className="dropdown">
         <button onClick={handleClick}>
-          <IoMdMenu color='#648de5' />
+          <IoMdMenu color="#648de5" />
         </button>
         {toggle && <Sidebar setvalue={toggle} />}
       </div>
-      <div className='nav-links'>
+      <div className="nav-links">
         <Link>
           <FaPhoneAlt
             size={31}
-            color='white'
+            color="#648de5"
           />
         </Link>
         <Link>
           <FaEnvelope
             size={35}
-            color='white'
+            color="#648de5"
           />
         </Link>
         <Link>
           <MdAccountCircle
             size={40}
-            color='white'
+            color="#648de5"
           />
         </Link>
       </div>

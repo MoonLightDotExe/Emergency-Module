@@ -3,6 +3,7 @@ import './App.css'
 
 import Navbar from './components/Navbar/Navbar'
 import LandingPage from './pages/LandingPage/LandingPage'
+import Dashboard from './pages/Dashboard/Dashboard'
 import AddPingTransition from './components/Transitions/AddPingTransition/AddPingTransition'
 import NearbyServices from './pages/NearbyServices/NearbyServices'
 import Maps from './components/Maps/Maps'
@@ -18,27 +19,31 @@ function App() {
 
       <Routes>
         <Route
-          path='/'
+          path="/"
           Component={LandingPage}
         />
         <Route
-          path='/loading'
+          path="/loading"
           Component={AddPingTransition}
         />
         <Route
-          path='/nearby_services'
+          path="/nearby_services"
           Component={NearbyServices}
         />
         <Route
-          path='/maps'
+          path="/maps"
           Component={Maps}
         />
         <Route
-          path='/register'
+          path="/dashboard"
+          Component={Dashboard}
+        />
+        <Route
+          path="/register"
           Component={Register}
         />
         <Route
-          path='/login'
+          path="/login"
           Component={Login}
         />
       </Routes>
