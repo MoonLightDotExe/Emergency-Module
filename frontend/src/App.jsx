@@ -6,6 +6,8 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import AddPingTransition from './components/Transitions/AddPingTransition/AddPingTransition'
 import NearbyServices from './pages/NearbyServices/NearbyServices'
 import Maps from './components/Maps/Maps'
+import Register from './pages/Register/Register'
+import Login from './pages/Login/Login'
 
 function App() {
   return (
@@ -27,6 +29,14 @@ function App() {
         <Route
           path='/maps'
           Component={Maps}
+        />
+        <Route
+          path='/register'
+          Component={Register}
+        />
+        <Route
+          path='/login'
+          Component={Login}
         />
       </Routes>
     </Router>
