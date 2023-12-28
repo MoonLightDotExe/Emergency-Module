@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   LineChart,
   Line,
@@ -7,33 +7,24 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
 } from 'recharts'
 
-import {
-  APIProvider,
-  Map,
-  Marker,
-  Pin,
-  InfoWindow,
-} from '@vis.gl/react-google-maps'
+import axios from 'axios'
+
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
 
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
 
 import { Link, NavLink } from 'react-router-dom'
 import './Dashboard.css'
-
-// import { ChartContainer, BarPlot } from '@mui/x-charts'
 
 import StatCard from '../../components/StatCard/StatCard'
 
@@ -90,17 +81,93 @@ const Dashboard = () => {
   ]
 
   const position = { lat: 19.076, lng: 72.8777 }
-  // const borivali = { lat: 19.2307, lng: 72.8567 }
   const arr = [
-    { lat: 19.2307, lng: 72.8567 },
-    { lat: 19.23, lng: 72.856 },
-    { lat: 19.2311, lng: 72.8569 },
+    { lat: 19.251335, lng: 72.871162 },
+    { lat: 19.257422, lng: 72.867275 },
+    { lat: 19.253004, lng: 72.862849 },
+    { lat: 19.249297, lng: 72.862487 },
+    { lat: 19.252756, lng: 72.865789 },
+    { lat: 19.256793, lng: 72.868481 },
+    { lat: 19.248791, lng: 72.86835 },
+    { lat: 19.247683, lng: 72.866926 },
+    { lat: 19.252014, lng: 72.86765 },
+    { lat: 19.250876, lng: 72.868061 },
+    { lat: 19.248154, lng: 72.866223 },
+    { lat: 19.249338, lng: 72.863352 },
+    { lat: 19.257032, lng: 72.867622 },
+    { lat: 19.250792, lng: 72.864383 },
+    { lat: 19.253867, lng: 72.866044 },
+    { lat: 19.250307, lng: 72.865011 },
+    { lat: 19.247939, lng: 72.868066 },
+    { lat: 19.248318, lng: 72.867223 },
+    { lat: 19.24693, lng: 72.867794 },
+    { lat: 19.25624, lng: 72.865245 },
+    { lat: 19.249466, lng: 72.869691 },
+    { lat: 19.246392, lng: 72.861212 },
+    { lat: 19.250842, lng: 72.868223 },
+    { lat: 19.248721, lng: 72.868161 },
+    { lat: 19.247203, lng: 72.863578 },
+    { lat: 19.24606, lng: 72.865695 },
+    { lat: 19.245272, lng: 72.865122 },
+    { lat: 19.248822, lng: 72.862793 },
+    { lat: 19.256576, lng: 72.864116 },
+    { lat: 19.247146, lng: 72.866108 },
+    { lat: 19.252863, lng: 72.865326 },
+    { lat: 19.255938, lng: 72.867709 },
+    { lat: 19.251845, lng: 72.86772 },
+    { lat: 19.249222, lng: 72.862635 },
+    { lat: 19.256157, lng: 72.868522 },
+    { lat: 19.248373, lng: 72.86307 },
+    { lat: 19.248354, lng: 72.864491 },
+    { lat: 19.248437, lng: 72.865048 },
+    { lat: 19.246967, lng: 72.8631 },
+    { lat: 19.25677, lng: 72.866865 },
+    { lat: 19.250173, lng: 72.864874 },
+    { lat: 19.251685, lng: 72.86857 },
+    { lat: 19.256806, lng: 72.868933 },
+    { lat: 19.254043, lng: 72.86844 },
+    { lat: 19.24979, lng: 72.867559 },
+    { lat: 19.257207, lng: 72.865204 },
+    { lat: 19.24798, lng: 72.865966 },
+    { lat: 19.246657, lng: 72.868379 },
+    { lat: 19.25609, lng: 72.867094 },
+    { lat: 19.251309, lng: 72.86785 },
+    { lat: 19.248841, lng: 72.864759 },
   ]
+
+  let arr2 = []
+
+  const [array, setArray] = useState([])
+
+  const getPings = async () => {
+    try {
+      const response = await axios.get(
+        'http://localhost:5000/api/tests/active_pings'
+      )
+
+      const data2 = await response.data
+
+      data2.data.forEach((val) => {
+        arr2.push({
+          lat: val.location.latitude,
+          lng: val.location.longitude,
+        })
+      })
+      setArray(arr2)
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  useEffect(() => {
+    getPings()
+  }, [])
+
+  setInterval(getPings, 60000)
 
   return (
     <div className="dashboard">
       <div className="dash-sidebar">
-        {/* <h1 className="s-menu">Menu</h1> */}
         <ul className="s-list">
           <li>
             <Link>
