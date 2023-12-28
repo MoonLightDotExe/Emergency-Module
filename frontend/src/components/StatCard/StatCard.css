@@ -1,5 +1,5 @@
 .stat-card {
-  width: 150px;
+  width: 180px;
   height: 220px;
   box-shadow: 0 2px 5px 2px rgba(128, 128, 128, 0.15);
   border-radius: 10px;
@@ -8,7 +8,7 @@
 
 .stat-info {
   margin-top: 30px;
-  line-height: 30px;
+  line-height: 40px;
 }
 
 .stat-num {
@@ -22,7 +22,7 @@
   color: grey;
 }
 
-.rates {
+.positive .rates {
   margin-top: 15px;
   display: flex;
   align-items: center;
@@ -32,5 +32,18 @@
   font-weight: 500;
   color: green;
   background-color: #dfffea;
+  width: 55px;
+}
+
+.negative .rates {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: red;
+  background-color: rgba(242, 38, 19, 0.1);
   width: 55px;
 }

@@ -166,9 +166,9 @@ const Dashboard = () => {
   setInterval(getPings, 60000)
 
   return (
-    <div className='dashboard'>
-      <div className='dash-sidebar'>
-        <ul className='s-list'>
+    <div className="dashboard">
+      <div className="dash-sidebar">
+        <ul className="s-list">
           <li>
             <Link to='./analytics'>
               <AiOutlineCompass
@@ -213,8 +213,8 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className='dash-right'>
-        <div className='stat-map'>
+      <div className="dash-right">
+        <div className="stat-map">
           <h1
             style={{
               fontSize: '45px',
@@ -225,7 +225,7 @@ const Dashboard = () => {
           >
             Current Emergencies
           </h1>
-          <APIProvider apiKey='AIzaSyA1KHEQejw-DRumfep9wSv4RZehdeUM8Ss'>
+          <APIProvider apiKey="AIzaSyA1KHEQejw-DRumfep9wSv4RZehdeUM8Ss">
             <div
               style={{
                 height: '500px',
@@ -250,78 +250,73 @@ const Dashboard = () => {
           </APIProvider>
         </div>
 
-        <div className='stat-cards'>
-          <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
+        <div className="stat-cards">
           <StatCard />
         </div>
 
-        <div className='stat-middle'>
-          <div className='stat-middle-left'>
-            <div className='sml-top'>
-              <div className='sml-top-left'>
+        <div className="stat-middle">
+          <div className="stat-middle-left">
+            <div className="sml-top">
+              <div className="sml-top-left">
                 <h1>Recent Services</h1>
                 <h2>8k social visitors</h2>
               </div>
-              <button className='sml-top-right'>See All</button>
+              <button className="sml-top-right">See All</button>
             </div>
 
-            <div className='sml-middle'>
+            <div className="sml-middle">
               <h1>Service</h1>
               <h1>Service Type</h1>
             </div>
 
-            <ul className='sml-bottom'>
-              <li className='sml-bottom-list'>
+            <ul className="sml-bottom">
+              <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item1</div> */}
-                <div className='sml-bl-service'>
-                  <h1>Item1</h1>
-                  <p>description</p>
+                <div className="sml-bl-service">
+                  <h1>Urban Fire</h1>
+                  <p>Fire outrages in localities</p>
                 </div>
-                <div className='sml-bl-service-type'>Fire Emergency</div>
+                <div className="sml-bl-service-type">Fire Emergency</div>
               </li>
 
-              <li className='sml-bottom-list'>
+              <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item2</div> */}
-                <div className='sml-bl-service'>
-                  <h1>Item1</h1>
-                  <p>description</p>
+                <div className="sml-bl-service">
+                  <h1>Flu</h1>
+                  <p>Dengue fever </p>
                 </div>
-                <div className='sml-bl-service-type'>Health Emergency</div>
+                <div className="sml-bl-service-type">Health Emergency</div>
               </li>
 
-              <li className='sml-bottom-list'>
+              <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item3</div> */}
-                <div className='sml-bl-service'>
-                  <h1>Item1</h1>
-                  <p>description</p>
+                <div className="sml-bl-service">
+                  <h1>Riots</h1>
+                  <p>Protests of crowd</p>
                 </div>
-                <div className='sml-bl-service-type'>Police Emergency</div>
+                <div className="sml-bl-service-type">Police Emergency</div>
               </li>
 
-              <li className='sml-bottom-list'>
+              <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item4</div> */}
-                <div className='sml-bl-service'>
-                  <h1>Item1</h1>
-                  <p>description</p>
+                <div className="sml-bl-service">
+                  <h1>Accident</h1>
+                  <p>Bike Crash</p>
                 </div>
-                <div className='sml-bl-service-type'>Accident Case</div>
+                <div className="sml-bl-service-type">Accident Case</div>
               </li>
 
-              <li className='sml-bottom-list-last'>
+              <li className="sml-bottom-list-last">
                 {/* <div className="sml-bl-items">Item5</div> */}
-                <div className='sml-bl-service'>
-                  <h1>Item1</h1>
-                  <p>description</p>
+                <div className="sml-bl-service">
+                  <h1>Gas Leak</h1>
+                  <p>Gas Leak in slums</p>
                 </div>
-                <div className='sml-bl-service-type'>Gas Cylinder Outbreak</div>
+                <div className="sml-bl-service-type">Gas Cylinder Outbreak</div>
               </li>
             </ul>
           </div>
-          <div className='stat-middle-right'>
+          <div className="stat-middle-right">
             <h1
               style={{
                 width: '950px',
@@ -347,78 +342,96 @@ const Dashboard = () => {
               }}
               style={{ zIndex: '-1' }}
             >
-              <CartesianGrid strokeDasharray='3 3' />
-              <XAxis dataKey='name' />
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
               <Legend />
               <Line
-                type='monotone'
-                dataKey='pv'
-                stroke='#8884d8'
+                type="monotone"
+                dataKey="pv"
+                stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
               <Line
-                type='monotone'
-                dataKey='uv'
-                stroke='#82ca9d'
+                type="monotone"
+                dataKey="uv"
+                stroke="#82ca9d"
               />
             </LineChart>
           </div>
         </div>
 
         <div
-          className='stat-lower'
+          className="stat-lower"
           style={{ marginBottom: '50px' }}
         >
-          <div className='stat-lower-heading'>
-            <div className='slh-left'></div>
-            {/* <button className="slh-right"></button> */}
-            <button className='sml-top-right'>See All </button>
+          <div className="stat-lower-heading">
+            <div className="slh-left">
+              <h1>Emergency and Help Available</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <button className="sml-top-right">See All </button>
           </div>
-          <div className='stat-lower-table'>
+          <div className="stat-lower-table">
             <TableContainer>
-              <Table variant='simple'>
+              <Table variant="simple">
                 <Thead>
                   <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                    <Th isNumeric>multiply by</Th>
-                    <Th isNumeric>multiply by</Th>
+                    <Th>Service Name</Th>
+                    <Th>Service Type</Th>
+                    <Th>Staff</Th>
+                    <Th>Resources</Th>
+                    <Th>Pings</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Karuna Hospital</Td>
+                    <Td>Fire</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>23</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Goregaon Police Station</Td>
+                    <Td>Riot</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>17</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Malad Fire Station</Td>
+                    <Td>Fire </Td>
+                    <Td>Available</Td>
+                    <Td>Unavailable</Td>
+                    <Td>57</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>HealthCare Hospital</Td>
+                    <Td>Health</Td>
+                    <Td>Unvailable</Td>
+                    <Td>Available</Td>
+                    <Td>41</Td>
+                  </Tr>
+
+                  <Tr>
+                    <Td>Magathane Police Station</Td>
+                    <Td>Police</Td>
+                    <Td>Unavailable</Td>
+                    <Td>Available</Td>
+                    <Td>11</Td>
+                  </Tr>
+
+                  <Tr>
+                    <Td>LifeLine Hospital</Td>
+                    <Td>Health</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>12</Td>
                   </Tr>
                 </Tbody>
               </Table>
