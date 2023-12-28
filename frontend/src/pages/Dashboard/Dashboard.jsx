@@ -185,11 +185,6 @@ const Dashboard = () => {
 
         <div className="stat-cards">
           <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
         </div>
 
         <div className="stat-middle">
@@ -211,8 +206,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item1</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Urban Fire</h1>
+                  <p>Fire outrages in localities</p>
                 </div>
                 <div className="sml-bl-service-type">Fire Emergency</div>
               </li>
@@ -220,8 +215,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item2</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Flu</h1>
+                  <p>Dengue fever </p>
                 </div>
                 <div className="sml-bl-service-type">Health Emergency</div>
               </li>
@@ -229,8 +224,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item3</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Riots</h1>
+                  <p>Protests of crowd</p>
                 </div>
                 <div className="sml-bl-service-type">Police Emergency</div>
               </li>
@@ -238,8 +233,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item4</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Accident</h1>
+                  <p>Bike Crash</p>
                 </div>
                 <div className="sml-bl-service-type">Accident Case</div>
               </li>
@@ -247,8 +242,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list-last">
                 {/* <div className="sml-bl-items">Item5</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Gas Leak</h1>
+                  <p>Gas Leak in slums</p>
                 </div>
                 <div className="sml-bl-service-type">Gas Cylinder Outbreak</div>
               </li>
@@ -305,8 +300,10 @@ const Dashboard = () => {
           style={{ marginBottom: '50px' }}
         >
           <div className="stat-lower-heading">
-            <div className="slh-left"></div>
-            {/* <button className="slh-right"></button> */}
+            <div className="slh-left">
+              <h1>Emergency and Help Available</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </div>
             <button className="sml-top-right">See All </button>
           </div>
           <div className="stat-lower-table">
@@ -314,44 +311,60 @@ const Dashboard = () => {
               <Table variant="simple">
                 <Thead>
                   <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                    <Th isNumeric>multiply by</Th>
-                    <Th isNumeric>multiply by</Th>
+                    <Th>Service Name</Th>
+                    <Th>Service Type</Th>
+                    <Th>Staff</Th>
+                    <Th>Resources</Th>
+                    <Th>Pings</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Karuna Hospital</Td>
+                    <Td>Fire</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>23</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Goregaon Police Station</Td>
+                    <Td>Riot</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>17</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Malad Fire Station</Td>
+                    <Td>Fire </Td>
+                    <Td>Available</Td>
+                    <Td>Unavailable</Td>
+                    <Td>57</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>HealthCare Hospital</Td>
+                    <Td>Health</Td>
+                    <Td>Unvailable</Td>
+                    <Td>Available</Td>
+                    <Td>41</Td>
+                  </Tr>
+
+                  <Tr>
+                    <Td>Magathane Police Station</Td>
+                    <Td>Police</Td>
+                    <Td>Unavailable</Td>
+                    <Td>Available</Td>
+                    <Td>11</Td>
+                  </Tr>
+
+                  <Tr>
+                    <Td>LifeLine Hospital</Td>
+                    <Td>Health</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>12</Td>
                   </Tr>
                 </Tbody>
               </Table>
