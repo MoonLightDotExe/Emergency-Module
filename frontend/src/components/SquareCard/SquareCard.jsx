@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SquareCard.css'
 
 import { FaFire } from 'react-icons/fa'
@@ -6,6 +6,7 @@ import { FaHospitalUser } from 'react-icons/fa'
 import { GiPoliceOfficerHead } from 'react-icons/gi'
 import { FaLocationDot } from 'react-icons/fa6'
 
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { addPing } from '../../features/addPing/addPingSlice'
 
@@ -13,6 +14,7 @@ const SquareCard = () => {
   const dispatch = useDispatch()
 
   const { user, isLoading } = useSelector((state) => state.addPing)
+  const navigate = useNavigate()
 
   const handleClick = (type) => {
     try {

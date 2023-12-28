@@ -8,18 +8,21 @@ import NearbyServices from './pages/NearbyServices/NearbyServices'
 import Maps from './components/Maps/Maps'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const { user, isLoading } = useSelector((state) => state.addPing)
   return (
     <Router>
       <Navbar />
+
       <Routes>
         <Route
           path='/'
           Component={LandingPage}
         />
         <Route
-          path='/test'
+          path='/loading'
           Component={AddPingTransition}
         />
         <Route
