@@ -31,12 +31,30 @@ module.exports = {
           data,
           msg: 'Added Ping Successfully',
         })
-      }, 0)
+      }, 100)
     } catch (error) {
       res.status(404).json({
         success: false,
         Error: error,
         msg: 'Add ping failed!',
+      })
+    }
+  },
+  test_get_active_pings: async (req, res) => {
+    try {
+      const data = await client_repo.getActivePings()
+      console.log(data)
+
+      res.status(200).json({
+        success: true,
+        data,
+        msg: 'Retrieved Active Pings Successfully!',
+      })
+    } catch (err) {
+      res.status(404).json({
+        success: false,
+        Error: err,
+        msg: 'Get Active Pings failed!',
       })
     }
   },

@@ -97,4 +97,15 @@ const self = (module.exports = {
       }
     })
   },
+  getActivePings: (body) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const active_pings = await pings.find({})
+        console.log(active_pings)
+        resolve(active_pings)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  },
 })

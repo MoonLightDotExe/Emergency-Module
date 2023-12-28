@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   LineChart,
   Line,
@@ -7,41 +7,32 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
 } from 'recharts'
 
-import {
-  APIProvider,
-  Map,
-  Marker,
-  Pin,
-  InfoWindow,
-} from '@vis.gl/react-google-maps'
+import axios from 'axios'
+
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
 
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
 
 import { Link, NavLink } from 'react-router-dom'
 import './Dashboard.css'
 
-// import { ChartContainer, BarPlot } from '@mui/x-charts'
-
 import StatCard from '../../components/StatCard/StatCard'
 
-import { LiaListAlt } from 'react-icons/lia'
 import { FaFire } from 'react-icons/fa'
 import { FaHospitalUser } from 'react-icons/fa'
 import { GiPoliceOfficerHead } from 'react-icons/gi'
 import { FaLocationDot } from 'react-icons/fa6'
+import { AiOutlineCompass } from 'react-icons/ai'
 
 const Dashboard = () => {
   const data = [
@@ -90,25 +81,101 @@ const Dashboard = () => {
   ]
 
   const position = { lat: 19.076, lng: 72.8777 }
-  // const borivali = { lat: 19.2307, lng: 72.8567 }
   const arr = [
-    { lat: 19.2307, lng: 72.8567 },
-    { lat: 19.23, lng: 72.856 },
-    { lat: 19.2311, lng: 72.8569 },
+    { lat: 19.251335, lng: 72.871162 },
+    { lat: 19.257422, lng: 72.867275 },
+    { lat: 19.253004, lng: 72.862849 },
+    { lat: 19.249297, lng: 72.862487 },
+    { lat: 19.252756, lng: 72.865789 },
+    { lat: 19.256793, lng: 72.868481 },
+    { lat: 19.248791, lng: 72.86835 },
+    { lat: 19.247683, lng: 72.866926 },
+    { lat: 19.252014, lng: 72.86765 },
+    { lat: 19.250876, lng: 72.868061 },
+    { lat: 19.248154, lng: 72.866223 },
+    { lat: 19.249338, lng: 72.863352 },
+    { lat: 19.257032, lng: 72.867622 },
+    { lat: 19.250792, lng: 72.864383 },
+    { lat: 19.253867, lng: 72.866044 },
+    { lat: 19.250307, lng: 72.865011 },
+    { lat: 19.247939, lng: 72.868066 },
+    { lat: 19.248318, lng: 72.867223 },
+    { lat: 19.24693, lng: 72.867794 },
+    { lat: 19.25624, lng: 72.865245 },
+    { lat: 19.249466, lng: 72.869691 },
+    { lat: 19.246392, lng: 72.861212 },
+    { lat: 19.250842, lng: 72.868223 },
+    { lat: 19.248721, lng: 72.868161 },
+    { lat: 19.247203, lng: 72.863578 },
+    { lat: 19.24606, lng: 72.865695 },
+    { lat: 19.245272, lng: 72.865122 },
+    { lat: 19.248822, lng: 72.862793 },
+    { lat: 19.256576, lng: 72.864116 },
+    { lat: 19.247146, lng: 72.866108 },
+    { lat: 19.252863, lng: 72.865326 },
+    { lat: 19.255938, lng: 72.867709 },
+    { lat: 19.251845, lng: 72.86772 },
+    { lat: 19.249222, lng: 72.862635 },
+    { lat: 19.256157, lng: 72.868522 },
+    { lat: 19.248373, lng: 72.86307 },
+    { lat: 19.248354, lng: 72.864491 },
+    { lat: 19.248437, lng: 72.865048 },
+    { lat: 19.246967, lng: 72.8631 },
+    { lat: 19.25677, lng: 72.866865 },
+    { lat: 19.250173, lng: 72.864874 },
+    { lat: 19.251685, lng: 72.86857 },
+    { lat: 19.256806, lng: 72.868933 },
+    { lat: 19.254043, lng: 72.86844 },
+    { lat: 19.24979, lng: 72.867559 },
+    { lat: 19.257207, lng: 72.865204 },
+    { lat: 19.24798, lng: 72.865966 },
+    { lat: 19.246657, lng: 72.868379 },
+    { lat: 19.25609, lng: 72.867094 },
+    { lat: 19.251309, lng: 72.86785 },
+    { lat: 19.248841, lng: 72.864759 },
   ]
+
+  let arr2 = []
+
+  const [array, setArray] = useState([])
+
+  const getPings = async () => {
+    try {
+      const response = await axios.get(
+        'http://localhost:5000/api/tests/active_pings'
+      )
+
+      const data2 = await response.data
+
+      data2.data.forEach((val) => {
+        arr2.push({
+          lat: val.location.latitude,
+          lng: val.location.longitude,
+        })
+      })
+      setArray(arr2)
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  useEffect(() => {
+    getPings()
+  }, [])
+
+  setInterval(getPings, 60000)
 
   return (
     <div className="dashboard">
       <div className="dash-sidebar">
-        {/* <h1 className="s-menu">Menu</h1> */}
         <ul className="s-list">
           <li>
-            <Link>
-              <LiaListAlt
-                size={30}
+            <Link to='./analytics'>
+              <AiOutlineCompass
+                size={25}
                 style={{ marginLeft: '18px' }}
               />
-              <h1>Collection</h1>
+              <h1>Analytics</h1>
             </Link>
           </li>
           <li>
@@ -185,11 +252,6 @@ const Dashboard = () => {
 
         <div className="stat-cards">
           <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
-          <StatCard />
         </div>
 
         <div className="stat-middle">
@@ -211,8 +273,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item1</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Urban Fire</h1>
+                  <p>Fire outrages in localities</p>
                 </div>
                 <div className="sml-bl-service-type">Fire Emergency</div>
               </li>
@@ -220,8 +282,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item2</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Flu</h1>
+                  <p>Dengue fever </p>
                 </div>
                 <div className="sml-bl-service-type">Health Emergency</div>
               </li>
@@ -229,8 +291,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item3</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Riots</h1>
+                  <p>Protests of crowd</p>
                 </div>
                 <div className="sml-bl-service-type">Police Emergency</div>
               </li>
@@ -238,8 +300,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list">
                 {/* <div className="sml-bl-items">Item4</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Accident</h1>
+                  <p>Bike Crash</p>
                 </div>
                 <div className="sml-bl-service-type">Accident Case</div>
               </li>
@@ -247,8 +309,8 @@ const Dashboard = () => {
               <li className="sml-bottom-list-last">
                 {/* <div className="sml-bl-items">Item5</div> */}
                 <div className="sml-bl-service">
-                  <h1>Item1</h1>
-                  <p>description</p>
+                  <h1>Gas Leak</h1>
+                  <p>Gas Leak in slums</p>
                 </div>
                 <div className="sml-bl-service-type">Gas Cylinder Outbreak</div>
               </li>
@@ -305,8 +367,10 @@ const Dashboard = () => {
           style={{ marginBottom: '50px' }}
         >
           <div className="stat-lower-heading">
-            <div className="slh-left"></div>
-            {/* <button className="slh-right"></button> */}
+            <div className="slh-left">
+              <h1>Emergency and Help Available</h1>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </div>
             <button className="sml-top-right">See All </button>
           </div>
           <div className="stat-lower-table">
@@ -314,44 +378,60 @@ const Dashboard = () => {
               <Table variant="simple">
                 <Thead>
                   <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                    <Th isNumeric>multiply by</Th>
-                    <Th isNumeric>multiply by</Th>
+                    <Th>Service Name</Th>
+                    <Th>Service Type</Th>
+                    <Th>Staff</Th>
+                    <Th>Resources</Th>
+                    <Th>Pings</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Karuna Hospital</Td>
+                    <Td>Fire</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>23</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Goregaon Police Station</Td>
+                    <Td>Riot</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>17</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>Malad Fire Station</Td>
+                    <Td>Fire </Td>
+                    <Td>Available</Td>
+                    <Td>Unavailable</Td>
+                    <Td>57</Td>
                   </Tr>
 
                   <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
-                    <Td isNumeric>25.4</Td>
+                    <Td>HealthCare Hospital</Td>
+                    <Td>Health</Td>
+                    <Td>Unvailable</Td>
+                    <Td>Available</Td>
+                    <Td>41</Td>
+                  </Tr>
+
+                  <Tr>
+                    <Td>Magathane Police Station</Td>
+                    <Td>Police</Td>
+                    <Td>Unavailable</Td>
+                    <Td>Available</Td>
+                    <Td>11</Td>
+                  </Tr>
+
+                  <Tr>
+                    <Td>LifeLine Hospital</Td>
+                    <Td>Health</Td>
+                    <Td>Available</Td>
+                    <Td>Available</Td>
+                    <Td>12</Td>
                   </Tr>
                 </Tbody>
               </Table>
