@@ -26,7 +26,7 @@ function NearbyServices() {
           fontWeight='bold'
           textTransform='uppercase'
         >
-          {type == 1 && 'AMBULAMPS'} has been deployed to your location.
+          {'AMBULAMPS'} has been deployed to your location.
         </Text>
         <Text
           className='container_nearby_services--primary'

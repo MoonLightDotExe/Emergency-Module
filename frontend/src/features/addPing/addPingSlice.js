@@ -15,8 +15,7 @@ export const addPing = createAsyncThunk(
   'addPing/add',
   async (user, thunkAPI) => {
     try {
-      const data = await addPingService(user)
-      console.log(data)
+      return await addPingService(user)
     } catch (err) {
       const message = err.message || err.toString()
 
@@ -34,9 +33,10 @@ export const addPingSlice = createSlice({
       .addCase(addPing.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(addPing.fulfilled, (state) => {
+      .addCase(addPing.fulfilled, (state, action) => {
         state.isLoading = false
         state.message = 'Loaded'
+        state.data = action.payload
       })
   },
 })

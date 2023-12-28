@@ -23,7 +23,7 @@ const addPingService = async (userData) => {
       localStorage.setItem('isActive', true)
     }
 
-    return data
+    return data.data
   } catch (err) {
     return err
   }
