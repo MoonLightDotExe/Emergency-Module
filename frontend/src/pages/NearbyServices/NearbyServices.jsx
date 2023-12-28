@@ -16,7 +16,7 @@ import {
 
 import './NearbyServices.css'
 
-function NearbyServices({ type }) {
+function NearbyServices() {
   return (
     <>
       <div className='container_nearby_services'>
@@ -26,7 +26,7 @@ function NearbyServices({ type }) {
           fontWeight='bold'
           textTransform='uppercase'
         >
-          {type} has been deployed to your location.
+          {'AMBULAMPS'} has been deployed to your location.
         </Text>
         <Text
           className='container_nearby_services--primary'
@@ -112,14 +112,6 @@ function NearbyServices({ type }) {
       </div>
     </>
   )
-}
-
-NearbyServices.propTypes = {
-  type: PropTypes.string,
-}
-
-NearbyServices.defaultProps = {
-  type: 'Ambulance',
 }
 
 export default NearbyServices

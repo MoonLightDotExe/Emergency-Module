@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import SquareCard from '../../components/SquareCard/SquareCard'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import './LandingPage.css'
 
-import SquareCard from '../../components/SquareCard/SquareCard'
-
 const LandingPage = () => {
+  const { user, isLoading } = useSelector((state) => state.addPing)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoading == true) {
+      navigate('/loading')
+    }
+  }, [isLoading, navigate])
+
   return (
     <div className='landing-page'>
       <h1 className='land-ques'>WHAT DO YOU NEED HELP WITH ? </h1>

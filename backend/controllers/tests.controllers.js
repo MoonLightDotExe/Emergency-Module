@@ -24,12 +24,14 @@ module.exports = {
     try {
       // console.log(req.body);
       const data = await client_repo.addPing(req.body)
-      console.log(data)
-      res.status(201).json({
-        success: true,
-        data,
-        msg: 'Added Ping Successfully',
-      })
+      setTimeout(() => {
+        console.log('data aaya: ' + data)
+        res.status(201).json({
+          success: true,
+          data,
+          msg: 'Added Ping Successfully',
+        })
+      }, 0)
     } catch (error) {
       res.status(404).json({
         success: false,
