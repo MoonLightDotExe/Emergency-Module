@@ -59,20 +59,4 @@ const hospitalSchema = new mongoose.Schema({
   // }
 })
 
-hospitalSchema.pre('save', async function (next) {
-  if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10)
-  }
-
-  next()
-})
-
-hospitalSchema.methods.matchPassword = async function (password) {
-  return await bcrypt.compare(password, this.password)
-}
-
-hospitalSchema.methods.generateToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
-}
-
 module.exports = mongoose.model('hospitals', hospitalSchema)
