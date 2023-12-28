@@ -21,6 +21,7 @@ const LandingPage = () => {
       <h1 className='land-statement'>Help is just one click away</h1>
       <div className='cards'>
         <SquareCard />
+
         <svg
           className='svg_landing'
           viewBox='0 0 200 200'
