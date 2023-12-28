@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const policeSchema = new mongoose.Schema({
+  name: {
+    type: 'string',
+    required: true,
+  },
   email: {
     type: String,
     required: [true, 'Please Enter Email'],

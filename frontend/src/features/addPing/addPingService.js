@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:5000/tests/addPing'
+const API_URL = 'http://localhost:5000/api/tests/addPing'
 
 const addPingService = async (userData) => {
   try {
