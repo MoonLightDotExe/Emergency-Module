@@ -3,8 +3,11 @@ const dotenv = require('dotenv').config()
 const connectDB = require('./config/db.config')
 const bodyParser = require('body-parser')
 const testRouter = require('./routes/tests.routes')
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors())
 
 const PORT = process.env.PORT || 5000
 

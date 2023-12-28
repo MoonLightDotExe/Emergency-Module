@@ -24,7 +24,7 @@ module.exports = {
     try {
       // console.log(req.body);
       const data = await client_repo.addPing(req.body)
-      console.log(data)
+      console.log('data aaya: ' + data)
       res.status(201).json({
         success: true,
         data,

@@ -8,9 +8,9 @@ const self = (module.exports = {
   getServices: (body) => {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log(parseInt(body.type))
+        console.log(body)
 
-        if (parseInt(body.type) == 1) {
+        if (parseInt(body.Type) == 1) {
           try {
             const fire_response = await fires.find({})
 
@@ -18,7 +18,7 @@ const self = (module.exports = {
           } catch (err) {
             reject(err)
           }
-        } else if (parseInt(body.type) == 2) {
+        } else if (parseInt(body.Type) == 2) {
           try {
             const hospital_response = await hospitals.find({})
             console.log(hospital_response)
@@ -27,7 +27,7 @@ const self = (module.exports = {
           } catch (err) {
             reject(err)
           }
-        } else if (parseInt(body.type) == 3) {
+        } else if (parseInt(body.Type) == 3) {
           try {
             const police_response = await polices.find({})
             console.log(police_response)
@@ -40,7 +40,7 @@ const self = (module.exports = {
           reject('Invalid Emergency Type!')
         }
 
-        resolve(parseInt(body.type))
+        resolve(parseInt(body.Type))
       } catch (err) {
         reject(err)
       }
@@ -75,7 +75,7 @@ const self = (module.exports = {
         }
 
         const userLocation = body.Location
-        const locationsArray = await self.getServices(body.Type)
+        const locationsArray = await self.getServices(body)
         const sortedLocations = sortLocationsByDistance(
           locationsArray,
           userLocation

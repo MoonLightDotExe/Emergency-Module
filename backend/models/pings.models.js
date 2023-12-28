@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 const pingSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: [true, 'Enter User'],
-    ref: 'User',
-  },
   location: {
     latitude: {
       type: Number,
@@ -18,11 +13,11 @@ const pingSchema = new mongoose.Schema({
   },
   type: {
     type: Number,
-    required: [true, 'Enter Type of Ping']
-  }
+    required: [true, 'Enter Type of Ping'],
+  },
   // reports:{
 
   // }
 })
 
-module.exports = mongoose.model('Ping', pingSchema)
+module.exports = mongoose.model('pings', pingSchema)
