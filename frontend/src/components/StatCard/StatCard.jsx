@@ -1,28 +1,27 @@
 import React from 'react'
 import './StatCard.css'
 
-import { AiOutlineCompass } from 'react-icons/ai'
 import { FaArrowUp } from 'react-icons/fa'
 import { FaArrowDown } from 'react-icons/fa'
 
-import { SlFire } from 'react-icons/sl'
-import { FaPeopleLine } from 'react-icons/fa6'
-import { RiEarthquakeFill } from 'react-icons/ri'
-import { GiGasStove } from 'react-icons/gi'
-import { LiaPeopleCarrySolid } from 'react-icons/lia'
-import { MdElectricBolt } from 'react-icons/md'
+import { FaUserDoctor } from 'react-icons/fa6'
+import { FaAmbulance } from 'react-icons/fa'
+import { PiFireExtinguisherFill } from 'react-icons/pi'
+import { MdOutlineFireTruck } from 'react-icons/md'
+import { GiPoliceOfficerHead } from 'react-icons/gi'
+import { PiBarricadeBold } from 'react-icons/pi'
 
 const StatCard = () => {
   return (
     <>
       <div className="stat-card positive">
-        <SlFire
+        <FaUserDoctor
           size={35}
           color="grey"
         />
         <div className="stat-info">
           <h1 className="stat-num">150</h1>
-          <h1 className="stat-name">Urban Fire</h1>
+          <h1 className="stat-name">Doctors </h1>
         </div>
         <div className="rates">
           <FaArrowUp size={12} />
@@ -31,13 +30,13 @@ const StatCard = () => {
       </div>
 
       <div className="stat-card positive">
-        <FaPeopleLine
+        <FaAmbulance
           size={35}
           color="grey"
         />
         <div className="stat-info">
           <h1 className="stat-num">70</h1>
-          <h1 className="stat-name">Riot</h1>
+          <h1 className="stat-name">Ambulances </h1>
         </div>
         <div className="rates">
           <FaArrowUp size={12} />
@@ -46,13 +45,13 @@ const StatCard = () => {
       </div>
 
       <div className="stat-card negative">
-        <MdElectricBolt
+        <PiFireExtinguisherFill
           size={35}
           color="grey"
         />
         <div className="stat-info">
           <h1 className="stat-num">350</h1>
-          <h1 className="stat-name">Power Outage</h1>
+          <h1 className="stat-name">Firefighters </h1>
         </div>
         <div className="rates">
           <FaArrowDown size={12} />
@@ -61,13 +60,13 @@ const StatCard = () => {
       </div>
 
       <div className="stat-card positive">
-        <LiaPeopleCarrySolid
+        <MdOutlineFireTruck
           size={35}
           color="grey"
         />
         <div className="stat-info">
           <h1 className="stat-num">202</h1>
-          <h1 className="stat-name">Rescue Operation</h1>
+          <h1 className="stat-name">Fire Brigades</h1>
         </div>
         <div className="rates">
           <FaArrowUp size={12} />
@@ -76,13 +75,13 @@ const StatCard = () => {
       </div>
 
       <div className="stat-card negative">
-        <RiEarthquakeFill
+        <GiPoliceOfficerHead
           size={35}
           color="grey"
         />
         <div className="stat-info">
           <h1 className="stat-num">5</h1>
-          <h1 className="stat-name">Earthquakes</h1>
+          <h1 className="stat-name">Police Officers</h1>
         </div>
         <div className="rates">
           <FaArrowDown size={12} />
@@ -91,13 +90,13 @@ const StatCard = () => {
       </div>
 
       <div className="stat-card positive">
-        <GiGasStove
+        <PiBarricadeBold
           size={35}
           color="grey"
         />
         <div className="stat-info">
           <h1 className="stat-num">23</h1>
-          <h1 className="stat-name">Gas Leaks</h1>
+          <h1 className="stat-name">Barricades</h1>
         </div>
         <div className="rates">
           <FaArrowUp size={12} />
