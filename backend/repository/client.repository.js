@@ -8,9 +8,9 @@ const self = (module.exports = {
   getServices: (body) => {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log(parseInt(body.type))
+        console.log(body)
 
-        if (parseInt(body.type) == 1) {
+        if (parseInt(body.Type) == 1) {
           try {
             const fire_response = await fires.find({})
 
@@ -18,7 +18,7 @@ const self = (module.exports = {
           } catch (err) {
             reject(err)
           }
-        } else if (parseInt(body.type) == 2) {
+        } else if (parseInt(body.Type) == 2) {
           try {
             const hospital_response = await hospitals.find({})
             console.log(hospital_response)
@@ -27,7 +27,7 @@ const self = (module.exports = {
           } catch (err) {
             reject(err)
           }
-        } else if (parseInt(body.type) == 3) {
+        } else if (parseInt(body.Type) == 3) {
           try {
             const police_response = await polices.find({})
             console.log(police_response)
@@ -40,7 +40,7 @@ const self = (module.exports = {
           reject('Invalid Emergency Type!')
         }
 
-        resolve(parseInt(body.type))
+        resolve(parseInt(body.Type))
       } catch (err) {
         reject(err)
       }
@@ -50,10 +50,8 @@ const self = (module.exports = {
     return new Promise(async (resolve, reject) => {
       try {
         console.log(body)
-        //function to get sorted array of locations by distance
         function sortLocationsByDistance(locations, givenLocation) {
-          // Function to calculate Euclidean distance between two locations
-          function calculateDistance(location1, location2) {
+          function CalculateEuclideanDistance(location1, location2) {
             const x1 = location1.Lat
             const y1 = location1.Long
             const x2 = location2.Lat
@@ -62,24 +60,28 @@ const self = (module.exports = {
             return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
           }
 
-          // Sort locations array based on distance from the given location
           return locations.sort((location1, location2) => {
-            const distance1 = calculateDistance(givenLocation, location1)
-            const distance2 = calculateDistance(givenLocation, location2)
+            const distance1 = CalculateEuclideanDistance(
+              givenLocation,
+              location1
+            )
+            const distance2 = CalculateEuclideanDistance(
+              givenLocation,
+              location2
+            )
 
             return distance1 - distance2
           })
         }
 
         const userLocation = body.Location
-        const locationsArray = await self.getServices(body.Type)
+        const locationsArray = await self.getServices(body)
         const sortedLocations = sortLocationsByDistance(
           locationsArray,
           userLocation
         )
         console.log(sortedLocations)
 
-        //create a new ping
         const new_ping = await pings.create({
           location: {
             latitude: body.Location.Lat,
@@ -91,7 +93,6 @@ const self = (module.exports = {
 
         resolve(sortedLocations)
       } catch (error) {
-        //console.log(error);
         reject(error)
       }
     })

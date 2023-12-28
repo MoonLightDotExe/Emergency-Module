@@ -48,6 +48,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 100,
   },
+  type: {
+    type: String,
+    required: true,
+  },
 })
 
 userSchema.pre('save', async function (next) {

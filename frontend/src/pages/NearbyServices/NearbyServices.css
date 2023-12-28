@@ -1,0 +1,12 @@
+.container_nearby_services {
+  padding: 2rem;
+}
+
+.container_nearby_services--primary {
+  letter-spacing: 2px;
+}
+
+.container_nearby_services--card {
+  padding: 2rem;
+  margin-top: 2rem;
+}

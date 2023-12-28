@@ -1,9 +1,11 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import Navbar from './components/Navbar/Navbar'
 import LandingPage from './pages/LandingPage/LandingPage'
+import AddPingTransition from './components/Transitions/AddPingTransition/AddPingTransition'
+import NearbyServices from './pages/NearbyServices/NearbyServices'
+import Maps from './components/Maps/Maps'
 
 function App() {
   return (
@@ -11,8 +13,20 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path='/'
           Component={LandingPage}
+        />
+        <Route
+          path='/test'
+          Component={AddPingTransition}
+        />
+        <Route
+          path='/nearby_services'
+          Component={NearbyServices}
+        />
+        <Route
+          path='/maps'
+          Component={Maps}
         />
       </Routes>
     </Router>

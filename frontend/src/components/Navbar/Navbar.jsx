@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Navbar.css'
+
 import { FaPhoneAlt } from 'react-icons/fa'
 import { FaEnvelope } from 'react-icons/fa'
 import { MdAccountCircle } from 'react-icons/md'
 
-import './Navbar.css'
-
 import { IoMdMenu } from 'react-icons/io'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(true)
 
   const handleClick = () => {
     setToggle(!toggle)
@@ -19,27 +20,29 @@ const Navbar = () => {
     <div className="navbar">
       <div className="dropdown">
         <button onClick={handleClick}>
-          <IoMdMenu />
+          <IoMdMenu color="#648de5" />
         </button>
-        {toggle && (
-          <ul className="toggle-menu">
-            <li>one</li>
-            <li>two</li>
-            <li>three</li>
-            <li>four</li>
-          </ul>
-        )}
+        {toggle && <Sidebar setvalue={toggle} />}
       </div>
       <div className="nav-links">
-        <span>
-          <FaPhoneAlt size={31} />
-        </span>
-        <span>
-          <FaEnvelope size={35} />
-        </span>
-        <span>
-          <MdAccountCircle size={40} />
-        </span>
+        <Link>
+          <FaPhoneAlt
+            size={31}
+            color="white"
+          />
+        </Link>
+        <Link>
+          <FaEnvelope
+            size={35}
+            color="white"
+          />
+        </Link>
+        <Link>
+          <MdAccountCircle
+            size={40}
+            color="white"
+          />
+        </Link>
       </div>
     </div>
   )
