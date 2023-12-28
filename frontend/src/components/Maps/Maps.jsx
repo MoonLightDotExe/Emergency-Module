@@ -37,5 +37,3 @@ const Maps = () => {
 }
 
 export default Maps
-
-//apiKey: 'AIzaSyA1KHEQejw-DRumfep9wSv4RZehdeUM8Ss',
