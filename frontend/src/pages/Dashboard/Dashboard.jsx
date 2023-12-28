@@ -339,8 +339,8 @@ const Dashboard = () => {
               className='slh-left'
               style={{ textTransform: 'uppercase' }}
             >
-              <h1>Emergency and Help Available</h1>
-              <p>Lorem ipsum dolor sit amet.</p>
+              <h1>Services Data</h1>
+              <p>For year 2022-23</p>
             </div>
             <button className='sml-top-right'>See All </button>
           </div>
