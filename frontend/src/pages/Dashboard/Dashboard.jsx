@@ -28,11 +28,11 @@ import './Dashboard.css'
 
 import StatCard from '../../components/StatCard/StatCard'
 
-import { LiaListAlt } from 'react-icons/lia'
 import { FaFire } from 'react-icons/fa'
 import { FaHospitalUser } from 'react-icons/fa'
 import { GiPoliceOfficerHead } from 'react-icons/gi'
 import { FaLocationDot } from 'react-icons/fa6'
+import { AiOutlineCompass } from 'react-icons/ai'
 
 const Dashboard = () => {
   const data = [
@@ -170,12 +170,12 @@ const Dashboard = () => {
       <div className='dash-sidebar'>
         <ul className='s-list'>
           <li>
-            <Link>
-              <LiaListAlt
-                size={30}
+            <Link to='./analytics'>
+              <AiOutlineCompass
+                size={25}
                 style={{ marginLeft: '18px' }}
               />
-              <h1>Collection</h1>
+              <h1>Analytics</h1>
             </Link>
           </li>
           <li>
