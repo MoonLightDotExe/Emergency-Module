@@ -10,7 +10,7 @@ import { IoMdMenu } from 'react-icons/io'
 import Sidebar from '../Sidebar/Sidebar'
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(true)
+  const [toggle, setToggle] = useState(false)
 
   const handleClick = () => {
     setToggle(!toggle)
@@ -28,19 +28,19 @@ const Navbar = () => {
         <Link>
           <FaPhoneAlt
             size={31}
-            color="white"
+            color="#648de5"
           />
         </Link>
         <Link>
           <FaEnvelope
             size={35}
-            color="white"
+            color="#648de5"
           />
         </Link>
         <Link>
           <MdAccountCircle
             size={40}
-            color="white"
+            color="#648de5"
           />
         </Link>
       </div>

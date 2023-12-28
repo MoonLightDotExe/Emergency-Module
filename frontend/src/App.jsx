@@ -3,6 +3,7 @@ import './App.css'
 
 import Navbar from './components/Navbar/Navbar'
 import LandingPage from './pages/LandingPage/LandingPage'
+import Dashboard from './pages/Dashboard/Dashboard'
 import AddPingTransition from './components/Transitions/AddPingTransition/AddPingTransition'
 import NearbyServices from './pages/NearbyServices/NearbyServices'
 import Maps from './components/Maps/Maps'
@@ -13,20 +14,24 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path='/'
+          path="/"
           Component={LandingPage}
         />
         <Route
-          path='/test'
+          path="/test"
           Component={AddPingTransition}
         />
         <Route
-          path='/nearby_services'
+          path="/nearby_services"
           Component={NearbyServices}
         />
         <Route
-          path='/maps'
+          path="/maps"
           Component={Maps}
+        />
+        <Route
+          path="/dashboard"
+          Component={Dashboard}
         />
       </Routes>
     </Router>
