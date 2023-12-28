@@ -9,17 +9,17 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // registerUser(text, pass)
-        if (success) {
-            navigate('/user');
-        } else {
-            navigate('/register');
-        }
+
+        // if (success) {
+        //     navigate('/user');
+        // } else {
+        //     navigate('/register');
+        // }
     }
     return (
         <Box display={'flex'} >
-            <Image h={'100vh'} src='https://www.investopedia.com/thmb/ToB9SX1bs4Of7be0ez0slhSC5yA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/layers-of-contemporary-financial-skyscrapers-in-central-business-district--hong-kong-818362142-a6a8866d862c46beb196309eb9dbb1e5.jpg' />
-            <Box w={'full'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+            <Image h={'100vh'} w={'70%'} src='https://www.investopedia.com/thmb/ToB9SX1bs4Of7be0ez0slhSC5yA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/layers-of-contemporary-financial-skyscrapers-in-central-business-district--hong-kong-818362142-a6a8866d862c46beb196309eb9dbb1e5.jpg' />
+            <Box w={'30%'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
                 <Heading mb={'1rem'}>Login</Heading>
                 <Box mb={'1rem'}>
                     <Text pb={1}>Email</Text>
