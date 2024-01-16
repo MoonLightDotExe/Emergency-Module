@@ -36,7 +36,7 @@ function NearbyServices() {
           fontWeight='bold'
           textTransform='uppercase'
         >
-          {'AMBULAMPS'} has been deployed to your location.
+          Emergency Units have been deployed to your location.
         </Text>
         <Text
           className='container_nearby_services--primary'
@@ -58,7 +58,7 @@ function NearbyServices() {
                   variant='elevated'
                 >
                   <CardHeader>
-                    <Heading size='md'>{val.email}</Heading>
+                    <Heading size='md'>{val.name}</Heading>
                   </CardHeader>
                   <CardBody>
                     <Flex>

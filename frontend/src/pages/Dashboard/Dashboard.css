@@ -92,9 +92,11 @@
 .sml-top-left {
   width: 180px;
   height: 60px;
+  padding-left: 0.6 rem;
+  padding-bottom: 0.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   line-height: 20px;
 }

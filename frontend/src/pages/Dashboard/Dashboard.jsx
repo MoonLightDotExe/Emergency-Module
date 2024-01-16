@@ -191,7 +191,7 @@ const Dashboard = () => {
               textTransform: 'uppercase',
             }}
           >
-            Current Emergencies
+            Live Emergencies
           </h1>
           <APIProvider apiKey='AIzaSyA1KHEQejw-DRumfep9wSv4RZehdeUM8Ss'>
             <div

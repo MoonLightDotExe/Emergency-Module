@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:5000/api/tests/addPing'
+const API_URL = 'http://localhost:5000'
 
 const addPingService = async (userData) => {
   try {
@@ -15,7 +15,7 @@ const addPingService = async (userData) => {
       Type: parseInt(userData.type),
     }
 
-    const response = await axios.post(API_URL, sendData)
+    const response = await axios.post(`${API_URL}/api/tests/addPing`, sendData)
 
     const data = await response.data
 

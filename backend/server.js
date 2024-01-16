@@ -17,6 +17,10 @@ connectDB()
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 
+app.get('/', () => {
+  res.send('HELLO')
+})
+
 app.use('/api/tests', testRouter)
 app.use('/api/auth', authRouter)
 
