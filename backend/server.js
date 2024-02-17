@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const testRouter = require('./routes/tests.routes')
 const authRouter = require('./routes/auth.routes')
 const cors = require('cors')
+const { Server } = require('socket.io')
 
 const app = express()
 
@@ -27,3 +28,15 @@ app.use('/api/auth', authRouter)
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 })
+
+const io = new Server({
+  cors: {
+    origin: '*'
+  }
+})
+
+io.on('connection', (socket) => {
+  socket.emit('event')
+})
+
+io.listen(4000)

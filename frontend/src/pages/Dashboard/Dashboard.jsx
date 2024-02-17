@@ -34,7 +34,26 @@ import { GiPoliceOfficerHead } from 'react-icons/gi'
 import { FaLocationDot } from 'react-icons/fa6'
 import { AiOutlineCompass } from 'react-icons/ai'
 
+import io from 'socket.io-client';
+
 const Dashboard = () => {
+  const [socket, setSocket] = useState(null);
+  useEffect(() => {
+    const socketInstance = io('http://localhost:4000');
+    setSocket(socketInstance);
+
+    // listen for events emitted by the server
+    socketInstance.on('connect', () => {
+      console.log(`Connected to server`);
+    });
+
+    return () => {
+      if (socketInstance) {
+        socketInstance.disconnect()
+      }
+    };
+  }, []);
+
   const data = [
     {
       name: '12:00am',
@@ -303,7 +322,7 @@ const Dashboard = () => {
                 left: 20,
                 bottom: 5,
               }}
-              // style={{ zIndex: '-1' }}
+            // style={{ zIndex: '-1' }}
             >
               <CartesianGrid strokeDasharray='3 3' />
               <XAxis dataKey='name' />
