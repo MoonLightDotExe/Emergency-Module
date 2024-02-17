@@ -1,5 +1,6 @@
 const dotenv = require('dotenv').config()
 const client_repo = require('../repository/client.repository')
+const utility_repo = require('../repository/utility.repository')
 
 module.exports = {
   test_get_services: async (req, res) => {
@@ -40,6 +41,7 @@ module.exports = {
       })
     }
   },
+
   test_get_active_pings: async (req, res) => {
     try {
       const data = await client_repo.getActivePings()
@@ -55,6 +57,25 @@ module.exports = {
         success: false,
         Error: err,
         msg: 'Get Active Pings failed!',
+      })
+    }
+  },
+
+  test_dynamic_data: async (req, res) => {
+    try {
+      const data = await utility_repo.dynamicData(req.body)
+      console.log(data)
+
+      res.status(200).json({
+        success: true,
+        data,
+        msg: 'Retrieved Dynamic Data Successfully!',
+      })
+    } catch (err) {
+      res.status(404).json({
+        success: false,
+        Error: err,
+        msg: 'Failed to get Dynamic Data!',
       })
     }
   },

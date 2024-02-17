@@ -25,7 +25,7 @@ function OverallHotSpots() {
         let sendBody = {
           latitudes: latitudes,
           longitudes: longitudes,
-          n_clusters: 3,
+          n_clusters: 4,
         }
 
         const cluster_response = await axios.post(

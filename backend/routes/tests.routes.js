@@ -8,4 +8,6 @@ testRouter.post('/addPing', tests.test_add_ping)
 
 testRouter.get('/active_pings', tests.test_get_active_pings)
 
+testRouter.get('/testDynamicData', tests.test_dynamic_data)
+
 module.exports = testRouter

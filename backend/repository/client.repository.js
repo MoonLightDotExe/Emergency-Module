@@ -46,6 +46,7 @@ const self = (module.exports = {
       }
     })
   },
+
   addPing: (body) => {
     return new Promise(async (resolve, reject) => {
       try {
