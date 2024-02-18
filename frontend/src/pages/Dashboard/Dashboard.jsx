@@ -47,6 +47,10 @@ const Dashboard = () => {
       console.log(`Connected to server`);
     });
 
+    socketInstance.on('updateData', (data) => {
+      console.log(data)
+    })
+
     return () => {
       if (socketInstance) {
         socketInstance.disconnect()

@@ -4,8 +4,10 @@ const connectDB = require('./config/db.config')
 const bodyParser = require('body-parser')
 const testRouter = require('./routes/tests.routes')
 const authRouter = require('./routes/auth.routes')
+const tests = require('./controllers/tests.controllers')
 const cors = require('cors')
 const { Server } = require('socket.io')
+const events = require('events')
 
 const app = express()
 
@@ -35,8 +37,20 @@ const io = new Server({
   }
 })
 
+let computedData = {}
+
+const evenEmitter = new events.EventEmitter()
+
+setInterval(async () => {
+  computedData = await tests.test_dynamic_data()
+  console.log(computedData)
+  evenEmitter.emit('liveData')
+}, 5000)
+
 io.on('connection', (socket) => {
-  socket.emit('event')
+  evenEmitter.on('liveData', () => {
+    socket.broadcast.emit('updateData', computedData)
+  })
 })
 
 io.listen(4000)

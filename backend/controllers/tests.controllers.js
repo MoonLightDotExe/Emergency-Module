@@ -63,20 +63,31 @@ module.exports = {
 
   test_dynamic_data: async (req, res) => {
     try {
-      const data = await utility_repo.dynamicData(req.body)
+      // const data = await utility_repo.dynamicData(req.body)
+      const data = await utility_repo.dynamicData()
       console.log(data)
 
-      res.status(200).json({
+      // res.status(200).json({
+      //   success: true,
+      //   data,
+      //   msg: 'Retrieved Dynamic Data Successfully!',
+      // })
+      return {
         success: true,
         data,
         msg: 'Retrieved Dynamic Data Successfully!',
-      })
+      }
     } catch (err) {
-      res.status(404).json({
+      // res.status(404).json({
+      //   success: false,
+      //   Error: err,
+      //   msg: 'Failed to get Dynamic Data!',
+      // })
+      return {
         success: false,
         Error: err,
         msg: 'Failed to get Dynamic Data!',
-      })
+      }
     }
   },
 }
