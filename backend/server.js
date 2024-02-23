@@ -33,8 +33,8 @@ app.listen(PORT, () => {
 
 const io = new Server({
   cors: {
-    origin: '*'
-  }
+    origin: '*',
+  },
 })
 
 let computedData = {}

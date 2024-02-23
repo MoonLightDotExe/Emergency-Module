@@ -34,29 +34,36 @@ import { GiPoliceOfficerHead } from 'react-icons/gi'
 import { FaLocationDot } from 'react-icons/fa6'
 import { AiOutlineCompass } from 'react-icons/ai'
 
-import io from 'socket.io-client';
+import io from 'socket.io-client'
 
 const Dashboard = () => {
-  const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useState(null)
+  const [activeData, setActiveData] = useState({
+    data: {
+      hospital: {},
+      fire: {},
+      police: {},
+    },
+  })
   useEffect(() => {
-    const socketInstance = io('http://localhost:4000');
-    setSocket(socketInstance);
+    const socketInstance = io('http://localhost:4000')
+    setSocket(socketInstance)
 
-    // listen for events emitted by the server
     socketInstance.on('connect', () => {
-      console.log(`Connected to server`);
-    });
+      console.log(`Connected to server`)
+    })
 
     socketInstance.on('updateData', (data) => {
       console.log(data)
+      setActiveData(data)
     })
 
     return () => {
       if (socketInstance) {
         socketInstance.disconnect()
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const data = [
     {
@@ -228,10 +235,10 @@ const Dashboard = () => {
                 zoom={11}
                 center={position}
               >
-                {array.map((item) => {
+                {array.map((item, index) => {
                   return (
                     <Marker
-                      key={item}
+                      key={index}
                       position={item}
                     />
                   )
@@ -242,7 +249,14 @@ const Dashboard = () => {
         </div>
 
         <div className='stat-cards'>
-          <StatCard />
+          <StatCard
+            doctors={activeData.data.hospital.doctors || 0}
+            ambulances={activeData.data.hospital.ambulances || 0}
+            fireFighters={activeData.data.fire.fireFighters || 0}
+            fireBrigades={activeData.data.fire.fireBrigades || 0}
+            policeOfficers={activeData.data.police.policeOfficers || 0}
+            policeBarricades={activeData.data.police.policeBarricades || 0}
+          />
         </div>
 
         <div className='stat-middle'>
@@ -326,7 +340,7 @@ const Dashboard = () => {
                 left: 20,
                 bottom: 5,
               }}
-            // style={{ zIndex: '-1' }}
+              // style={{ zIndex: '-1' }}
             >
               <CartesianGrid strokeDasharray='3 3' />
               <XAxis dataKey='name' />
