@@ -61,6 +61,34 @@ const self = (module.exports = {
       }
     })
   },
+
+  loginUser: (body) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { email, password, type } = body
+        const userExists = await users.findOne({ email })
+
+        if (
+          userExists &&
+          userExists.type == type &&
+          (await bcrypt.compare(password, userExists.password))
+        ) {
+          resolve({
+            id: userExists._id,
+            name: userExists.name,
+            email: userExists.email,
+            type: type,
+            token: self.generateToken(userExists._id),
+          })
+        } else {
+          reject('Invalid Credentials!')
+        }
+      } catch (err) {
+        reject(err)
+      }
+    })
+  },
+
   generateToken: () => {
     return jwt.sign({ _id: this._id }, process.env.JWT_SECRET)
   },

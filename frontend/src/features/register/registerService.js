@@ -9,8 +9,10 @@ const registerService = async (userData) => {
     const response = await axios.post(`${API_URL}/api/auth/register`, userData)
 
     const data = await response.data
+    console.log(data)
 
-    if (response.data.success) {
+    if (data.success) {
+      console.log('123')
     }
     console.log(data)
     return data.data

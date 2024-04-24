@@ -21,4 +21,22 @@ module.exports = {
       })
     }
   },
+
+  loginUser: async (req, res) => {
+    try {
+      const data = await auth_repo.loginUser(req.body)
+
+      res.status(200).json({
+        success: true,
+        data,
+        message: 'User registered successfully!',
+      })
+    } catch (err) {
+      res.status(401).json({
+        success: false,
+        err,
+        message: err.message,
+      })
+    }
+  },
 }

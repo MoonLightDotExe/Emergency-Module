@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -10,67 +11,71 @@ import Maps from './components/Maps/Maps'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import Analytics from './pages/Analytics/Analytics'
-import OverallHotSpots from './pages/Analytics_sections/OverallHotSpots/OverallHotSpots/'
+import OverallHotSpots from './pages/Analytics_sections/OverallHotSpots/OverallHotSpots'
 import PoliceHotSpots from './pages/Analytics_sections/PoliceHotSpots/PoliceHotSpots'
 import HealthHotSpots from './pages/Analytics_sections/HealthHotSpots/HealthHotSpots'
 import FireHotSpots from './pages/Analytics_sections/FireHotSpots/FireHotSpots'
+import ProtectRoutes from './components/ProtectRoutes/ProtectRoutes'
 
 import './App.css'
 
 function App() {
-  const { user, isLoading } = useSelector((state) => state.addPing)
+  const { isSuccess } = useSelector((state) => state.login)
+  const routesArray = [
+    { isSuccess: isSuccess, Component: LandingPage, to: '/' },
+    { isSuccess: isSuccess, Component: AddPingTransition, to: '/loading' },
+    { isSuccess: isSuccess, Component: NearbyServices, to: '/nearby_services' },
+    { isSuccess: isSuccess, Component: Maps, to: '/maps' },
+    { isSuccess: isSuccess, Component: Dashboard, to: '/dashboard' },
+    { isSuccess: isSuccess, Component: Analytics, to: '/dashboard/analytics' },
+    {
+      isSuccess: isSuccess,
+      Component: OverallHotSpots,
+      to: '/dashboard/analytics/overall_hotspots',
+    },
+    {
+      isSuccess: isSuccess,
+      Component: PoliceHotSpots,
+      to: '/dashboard/analytics/police_hotspots',
+    },
+    {
+      isSuccess: isSuccess,
+      Component: HealthHotSpots,
+      to: '/dashboard/analytics/health_hotspots',
+    },
+    {
+      isSuccess: isSuccess,
+      Component: FireHotSpots,
+      to: '/dashboard/analytics/fire_hotspots',
+    },
+  ]
+
   return (
     <Router>
-      <Navbar />
-
       <Routes>
-        <Route
-          path='/'
-          Component={LandingPage}
-        />
-        <Route
-          path='/loading'
-          Component={AddPingTransition}
-        />
-        <Route
-          path='/nearby_services'
-          Component={NearbyServices}
-        />
-        <Route
-          path='/maps'
-          Component={Maps}
-        />
-        <Route
-          path='/dashboard'
-          Component={Dashboard}
-        />
+        {routesArray.map((route, index) => {
+          if (localStorage.getItem('token')) {
+            return (
+              <Route
+                key={index}
+                to={route.to}
+                element={
+                  <ProtectRoutes
+                    isSuccess={route.isSuccess}
+                    Component={route.Component}
+                  />
+                }
+              />
+            )
+          }
+        })}
         <Route
           path='/register'
-          Component={Register}
+          element={<Register />}
         />
         <Route
           path='/login'
-          Component={Login}
-        />
-        <Route
-          path='/dashboard/analytics'
-          Component={Analytics}
-        />
-        <Route
-          path='/dashboard/analytics/overall_hotspots'
-          Component={OverallHotSpots}
-        />
-        <Route
-          path='/dashboard/analytics/police_hotspots'
-          Component={PoliceHotSpots}
-        />
-        <Route
-          path='/dashboard/analytics/health_hotspots'
-          Component={HealthHotSpots}
-        />
-        <Route
-          path='/dashboard/analytics/fire_hotspots'
-          Component={FireHotSpots}
+          element={<Login />}
         />
       </Routes>
     </Router>
