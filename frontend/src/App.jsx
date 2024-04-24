@@ -11,6 +11,9 @@ import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import Analytics from './pages/Analytics/Analytics'
 import OverallHotSpots from './pages/Analytics_sections/OverallHotSpots/OverallHotSpots/'
+import PoliceHotSpots from './pages/Analytics_sections/PoliceHotSpots/PoliceHotSpots'
+import HealthHotSpots from './pages/Analytics_sections/HealthHotSpots/HealthHotSpots'
+import FireHotSpots from './pages/Analytics_sections/FireHotSpots/FireHotSpots'
 
 import './App.css'
 
@@ -56,6 +59,18 @@ function App() {
         <Route
           path='/dashboard/analytics/overall_hotspots'
           Component={OverallHotSpots}
+        />
+        <Route
+          path='/dashboard/analytics/police_hotspots'
+          Component={PoliceHotSpots}
+        />
+        <Route
+          path='/dashboard/analytics/health_hotspots'
+          Component={HealthHotSpots}
+        />
+        <Route
+          path='/dashboard/analytics/fire_hotspots'
+          Component={FireHotSpots}
         />
       </Routes>
     </Router>

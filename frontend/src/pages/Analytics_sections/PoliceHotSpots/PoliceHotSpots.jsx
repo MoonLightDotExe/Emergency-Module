@@ -9,7 +9,7 @@ import {
   Pin,
 } from '@vis.gl/react-google-maps'
 
-function OverallHotSpots() {
+function PoliceHotSpots() {
   const [clusters, setClusters] = useState([])
   useEffect(() => {
     async function cluster() {
@@ -24,8 +24,10 @@ function OverallHotSpots() {
         const data2 = await active_pings_response.data
 
         data2.data.forEach((val) => {
-          latitudes.push(val.location.latitude)
-          longitudes.push(val.location.longitude)
+          if (val.type == 3) {
+            latitudes.push(val.location.latitude)
+            longitudes.push(val.location.longitude)
+          }
         })
 
         let sendBody = {
@@ -33,6 +35,7 @@ function OverallHotSpots() {
           longitudes: longitudes,
           n_clusters: 4,
         }
+        console.log(sendBody)
 
         const cluster_response = await axios.post(
           'http://127.0.0.1:5000/cluster',
@@ -60,7 +63,6 @@ function OverallHotSpots() {
   }, [])
 
   const position = { lat: 19.076, lng: 72.8777 }
-
   return (
     <APIProvider apiKey='AIzaSyA1KHEQejw-DRumfep9wSv4RZehdeUM8Ss'>
       <div
@@ -91,4 +93,4 @@ function OverallHotSpots() {
   )
 }
 
-export default OverallHotSpots
+export default PoliceHotSpots
