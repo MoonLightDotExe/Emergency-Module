@@ -10,14 +10,19 @@ This MERN stack application provides a platform for users to quickly report emer
 
 ### Tech Stack
 * **Frontend:** React
-* **Backend:** Node.js, Express.js
+* **Backend:** Node.js, Express.js, Python
 * **Database:** MongoDB
 
 ### Installation
 1. Clone the repository.
-2. Install dependencies: `npm install`
-3. Start the development server: `npm start`
-
+2. cd frontend
+3. Install dependencies: `npm install`
+4. cd backend
+5. Install dependencies: `npm install`
+6. Start the development server (backend): `npm run test`
+7. Start the development server (frontend): `npm run dev`
+8. Start the development server (python): `py flask_backend.py`
+ 
 ### Usage
 * User selects an emergency type.
 * Application determines user's location and displays nearest facility.
