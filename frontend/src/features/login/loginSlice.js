@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+
 import loginService from './loginService'
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
 
 export const login = createAsyncThunk('login/log', async (user, thunkAPI) => {
   try {
-    return await loginService(user)
+    await loginService(user)
   } catch (err) {
     const message = err.message || err.toString()
     return thunkAPI.rejectWithValue(message)

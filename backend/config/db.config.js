@@ -8,11 +8,9 @@ const connectDB = async (req, res) => {
     socketTimeoutMS: 60000,
   }
   const MONGO_URI = process.env.MONGO_URI
-
-  const connect = await mongoose.connect(MONGO_URI, MONGOOSE_OPTIONS)
-  console.log(`Database Connected on: ${connect.connection.host}`)
-
   try {
+    const connect = await mongoose.connect(MONGO_URI, MONGOOSE_OPTIONS)
+    console.log(`Database Connected on: ${connect.connection.host}`)
   } catch (err) {
     throw new Error(err)
   }

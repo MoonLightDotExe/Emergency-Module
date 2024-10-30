@@ -65,7 +65,7 @@ const self = (module.exports = {
   loginUser: (body) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const { email, password, type } = body
+        const { email, password } = body
         const userExists = await users.findOne({ email })
 
         if (
@@ -83,6 +83,15 @@ const self = (module.exports = {
         } else {
           reject('Invalid Credentials!')
         }
+      } catch (err) {
+        reject(err)
+      }
+    })
+  },
+
+  registerService: (body) => {
+    return new Promise(async (resolve, reject) => {
+      try {
       } catch (err) {
         reject(err)
       }

@@ -12,13 +12,12 @@ import {
 import { login } from '../../features/login/loginSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-const Login = () => {
+const Service_Login = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const toast = useToast()
   const dispatch = useDispatch()
-  const { isSuccess } = useSelector((state) => state.login)
 
   const handleSubmit = (e) => {
     try {
@@ -143,4 +142,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Service_Login

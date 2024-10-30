@@ -23,9 +23,9 @@ const fireSchema = new mongoose.Schema({
     required: [true, 'Enter Address'],
   },
   location: {
-    lattitude: {
+    latitude: {
       type: Number,
-      required: [true, 'Enter Lattitude'],
+      required: [true, 'Enter Latitude'],
     },
     longitude: {
       type: Number,

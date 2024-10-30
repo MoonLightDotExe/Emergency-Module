@@ -24,7 +24,8 @@ function NearbyServices() {
   }, [data])
 
   const handleTrack = (e) => {
-    console.log(e)
+    const url = `https://www.google.com/maps?q=${e.latitude},${e.longitude}`
+    window.open(url, '_blank')
   }
 
   return (
@@ -70,7 +71,7 @@ function NearbyServices() {
                         <Button
                           colorScheme='blue'
                           size='lg'
-                          onClick={() => handleTrack(val.id)}
+                          onClick={() => handleTrack(val.location)}
                         >
                           {' '}
                           TRACK{' '}
